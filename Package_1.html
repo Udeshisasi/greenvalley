@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Wedding Package | Green Valley Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-green': '#043418',
+                        'hotel-lime': '#b6d645',
+                        'custom-gray': '#C7C5C5'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'shine': 'shine 2s linear infinite',
+                        'fadeInUp': 'fadeInUp 0.8s ease-out',
+                        'slideInLeft': 'slideInLeft 0.8s ease-out',
+                        'slideInRight': 'slideInRight 0.8s ease-out',
+                        'pulse-soft': 'pulse-soft 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        shine: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'pulse-soft': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.05)', opacity: '0.8' }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-pattern': 'linear-gradient(135deg, #043418 0%, #1a5a32 50%, #b6d645 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .food-category {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+        .food-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(182, 214, 69, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .food-category:hover::before {
+            opacity: 1;
+            animation: shine 2s linear infinite;
+        }
+        .food-category:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(4, 52, 24, 0.15);
+            border: 2px solid rgba(182, 214, 69, 0.5) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%) !important;
+        }
+        .price-badge {
+            background: linear-gradient(135deg, #b6d645, #8bc34a);
+            box-shadow: 0 8px 32px rgba(182, 214, 69, 0.3);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(4, 52, 24, 0.95), rgba(26, 90, 50, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23b6d645" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23b6d645" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="%23b6d645" opacity="0.1"/><circle cx="90" cy="40" r="1" fill="%23b6d645" opacity="0.08"/><circle cx="10" cy="80" r="1.2" fill="%23b6d645" opacity="0.06"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            background-size: cover, 200px 200px;
+        }
+        .menu-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .menu-item:hover {
+            transform: translateX(5px);
+            color: #043418;
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #b6d645, #043418);
+            transition: width 0.3s ease;
+        }
+        .menu-item:hover::before {
+            width: 15px;
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #b6d645, #8bc34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(182, 214, 69, 0.3);
+            transition: all 0.3s ease;
+        }
+        .food-category:hover .category-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(182, 214, 69, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100 min-h-screen">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-10 w-32 h-32 bg-hotel-lime opacity-5 rounded-full floating-element"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-hotel-green opacity-5 rounded-full floating-element" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-40 left-1/4 w-40 h-40 bg-hotel-lime opacity-5 rounded-full floating-element" style="animation-delay: -4s;"></div>
+        <div class="absolute top-1/2 right-10 w-28 h-28 bg-hotel-green opacity-5 rounded-full floating-element" style="animation-delay: -1s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="hero-bg text-white shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-hotel-green/20 to-hotel-lime/10"></div>
+        <div class="container mx-auto px-4 py-8 relative z-10">
+            <div class="flex items-center justify-between">
+                <div class="animate-slideInLeft">
+                    <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-hotel-lime bg-clip-text text-transparent">
+                        Green Valley Hotel
+                    </h1>
+                    <p class="text-hotel-lime text-lg mt-2 tracking-wide">✨ Wedding Packages | Menu 01✨</p>
+                </div>
+                <a href="index.html#Package_1" class="animate-slideInRight text-sm text-hotel-lime hover:text-white transition-all duration-300 hover:scale-105 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+                   Back to Packages
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-hotel-green via-hotel-lime to-hotel-green"></div>
+    </header>
+
+    <!-- Package Details -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Decorative divider -->
+        <div class="flex items-center justify-center mb-12">
+            <div class="h-px bg-gradient-to-r from-transparent via-hotel-lime to-transparent w-full max-w-md"></div>
+            <div class="mx-4 w-3 h-3 bg-hotel-lime rounded-full animate-pulse-soft"></div>
+            <div class="h-px bg-gradient-to-r from-transparent via-hotel-lime to-transparent w-full max-w-md"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <!-- Package Header -->
+            <div class="flex flex-col lg:flex-row gap-12 mb-16">
+                <!-- Image -->
+                <div class="lg:w-1/2 animate-slideInLeft">
+                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
+                        <div class="relative">
+                            <img 
+                                src="../images/Pkg/pkg 01.png" 
+                                alt="Standard Wedding Package" 
+                                class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-hotel-green/20 to-transparent"></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Details -->
+                <div class="lg:w-1/2 flex flex-col justify-center animate-slideInRight">
+                    <div class="mb-6">
+                        <h1 class="text-4xl md:text-5xl font-bold text-hotel-green mb-4 leading-tight">
+                            <b>Wedding Package </b>
+                        </h1>
+                        <div class="price-badge inline-block px-8 py-4 rounded-2xl mb-6 transform hover:scale-105 transition-all duration-300">
+                            <div class="text-3xl md:text-4xl font-bold text-white">Rs. 3,250/-</div>
+                            <div class="text-white/90 text-sm">per person</div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+                        Our carefully crafted Standard Package offers an exquisite selection of premium dishes, 
+                        combining traditional Sri Lankan flavors with exceptional value for your special day.
+                    </p>
+
+                    <!-- Key Features -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-hotel-lime rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">🍽️</span>
+                            </div>
+                            <span class="text-gray-700 font-medium">Complete Menu</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-hotel-lime rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">💎</span>
+                            </div>
+                            <span class="text-gray-700 font-medium">Premium Quality</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-hotel-lime rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">👨‍🍳</span>
+                            </div>
+                            <span class="text-gray-700 font-medium">Expert Chefs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-hotel-lime rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">💰</span>
+                            </div>
+                            <span class="text-gray-700 font-medium">Great Value</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Full Menu Details -->
+            <div class="glass-effect rounded-2xl shadow-2xl p-8 mb-12 animate-fadeInUp">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-hotel-green mb-4">Complete Menu Selection</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Discover our carefully curated selection of dishes, each prepared with the finest ingredients 
+                        and traditional cooking methods to create an unforgettable culinary experience.
+                    </p>
+                </div>
+                
+                <!-- Welcome Drinks -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🥂</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Welcome Drinks</h3>
+                    </div>
+                    <p class="text-gray-600 italic ml-16">Refreshing beverages to greet your guests</p>
+                </div>
+                
+                <!-- Salads -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🥗</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Fresh Salads</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Mixed Vegetable Salad
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Egg Mayonnaise
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Carrot & Cabbage Salad
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Tomato & Cucumber Salad
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Rice & Noodles -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🍚</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Rice & Noodles</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Steamed Rice
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Vegetable Fried Rice
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Vegetable Fried Noodles
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Vegetable Fried Pasta
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Red Country Rice
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Meats -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🍖</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Premium Meats</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Fried Chicken Curry or Chicken Deviled
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Fish Ambulthiyal or Fish Deviled
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Beef Smore
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Pork Curry or Pork Deviled
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Vegetables -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🥬</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Garden Vegetables</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Dhal Curry or Dhal Tempered
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Potato Tempered
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Brinjal Morju
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Mixed Vegetable Curry
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Boiled Vegetables
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Cashew & Green Pea Curry
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Condiments -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🌶️</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Traditional Condiments</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Fish Cutlets
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Mango Chutney
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Papadam
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="food-category rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="category-icon">
+                            <span class="text-white text-xl">🍰</span>
+                        </div>
+                        <h3 class="font-bold text-hotel-green text-xl ml-4">Sweet Endings</h3>
+                    </div>
+                    <div class="ml-16">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Ice Cream with Chocolate
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Watalappan
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Caramel Pudding
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Jelly
+                            </li>
+                            <li class="menu-item flex items-center py-2">
+                                <span class="w-2 h-2 bg-hotel-lime rounded-full mr-3 flex-shrink-0"></span>
+                                Fresh Fruit
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="hero-bg text-white py-12 mt-20 relative overflow-hidden">
+        
+    </footer>
+</body>
+</html>

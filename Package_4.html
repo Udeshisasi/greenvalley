@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Wedding Package | Green Valley Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-green': '#043418',
+                        'hotel-lime': '#b6d645'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .food-category {
+            transition: all 0.3s ease;
+        }
+        .food-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(4, 52, 24, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-hotel-green text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">Green Valley Hotel</h1>
+                    <p class="text-hotel-lime text-sm mt-1">Wedding Packages</p>
+                </div>
+                <a href="index.html#Package_4" class="text-sm text-hotel-lime hover:underline">← Back to Packages</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Package Details -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="border-b my-4" style="border-color: #b6d645; border-width: 1px;"></div>
+        <div class="max-w-4xl mx-auto">
+            <!-- Package Header -->
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <!-- Image -->
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img 
+                            src="../images/Pkg/pkg 04.png" 
+                            alt="Standard Wedding Package" 
+                            class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                
+                <!-- Details -->
+                <div class="md:w-1/2">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <h1 class="text-3xl font-bold text-hotel-green mb-2">Premium Wedding Package</h1>
+                    <div class="text-2xl font-bold text-hotel-green mb-4">Rs. 4,250/- per person</div>
+                    
+                    <p class="text-gray-600 mb-6">Our Standard Package offers a balanced selection of premium dishes with excellent value for money.</p>
+                    
+                </div>
+            </div>
+            
+            <!-- Full Menu Details -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold text-hotel-green mb-6 border-b pb-2">Full Menu Details</h2>
+                
+                <!-- Welcome Drinks -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Welcome Drinks</h3>
+                </div>
+                
+                <!-- Salads -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Salads</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Mixed Vegetable Salad
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Original Egg Platter
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Tomato & Onion | Maldive Fish Sambol
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Carrot & Cabbage Salad
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Coleslaw Salad
+                        </li>
+                        
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Cucumber, Onion & Tomato Salad
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Rice & Noodles -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Rice & Noodles</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Basmathi Steamed Rice
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Basmathi Ghee Rice
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Basmathi Yellow Rice
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Basmathi Vegetable Fried Rice
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Red Country Rice
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            CHinese Noodles Tossed with Fride Egg & Vegetable
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Garlic Flavored Noodles with Spring Onions
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Vegetable Fried Pasta
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Meats -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Meats</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Fried Chicken Curry or Chicken Deviled
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Chicken Kurma or Chicken Curry
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Fish Ambulthiyal or Fish Deviled
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Hot Buttered Prowns or Prowns Deviled
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Pork Stew or Pork Deviled
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Sea Food Mixed Deviled
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Vegetables -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Vegetables</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Dhal Curry or Dhal Tempered
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Potato Curry or Potato Tempered
+                        </li>
+                        
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Brinjal Morju
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Cashew Curry
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Mixed Vegetable Curry
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Boiled Vegetables
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Been Tempered
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Mashroom Deviled
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Vegetable Chopsuey
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Condiments -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Condiments</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Fish Cutlets
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Maley Pickle
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Mango Chutney
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Maldive Fish Sambol
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Papadam
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="food-category bg-gray-50 rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold text-hotel-green text-lg mb-3">Desserts</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Ice Cream with Chocolate
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Fresh Fruit Platter
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Watalappan
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Caramel Pudding
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Jelly
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Curd & Treacle
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-hotel-lime rounded-full mr-2"></span>
+                            Chocolate Mousse
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Additional Information 
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold text-hotel-green mb-4">Package Information</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-hotel-green mb-2">What's Included</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-hotel-lime mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Standard table decorations with fresh flowers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-hotel-lime mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Basic sound system for background music</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-hotel-lime mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Complimentary bridal suite for 2 hours</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-hotel-green mb-2">Upgrade Options</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                <span>Premium decorations (+Rs. 25,000)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                <span>Professional photography (+Rs. 35,000)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                <span>Extended bridal suite (+Rs. 15,000 per hour)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-hotel-green text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-hotel-lime">© 2023 Green Valley Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

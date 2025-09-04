@@ -1,0 +1,3636 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Valley Hotel - Wedding Packages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-green': '#043418',
+                        'hotel-lime': '#b6d645',
+                        'hotel-dark': '#02190d',
+                        'hotel-light': '#e8f5e9'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(4, 52, 24, 0.15);
+        }
+        .circular-image {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #043418 0%, #02190d 100%);
+        }
+        .sidebar-item.active {
+            border-left: 4px solid #b6d645;
+            background-color: rgba(182, 214, 69, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #b6d645;
+            border-radius: 3px;
+        }
+        
+        .video-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        [lang="th"] {
+            font-family: 'Kanit', 'Sarabun', sans-serif;
+        }
+
+        .dropdown-menu {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animation classes */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Video controls */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 10;
+        }
+        
+        .video-control-btn {
+            background-color: rgba(4, 52, 24, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .video-control-btn:hover {
+            background-color: rgba(182, 214, 69, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .skip-btn {
+            background-color: rgba(182, 214, 69, 0.7);
+            color: #043418;
+            border-radius: 20px;
+            padding: 0 15px;
+            width: auto;
+        }
+        
+        /* Package styles */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .w-30 { width: 7.5rem; }
+        .h-30 { height: 7.5rem; }
+
+        /* Dancing Section Styles */
+        .dancing-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dancing-video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dancing-controls-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .dancing-dropdown-menu {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dancing-dropdown-menu:hover {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .dancing-dropdown-menu option {
+            background: #333;
+            color: white;
+        }
+
+        .dancing-video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.3s ease;
+        }
+
+        .dancing-video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .dancing-video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .dancing-video-control-btn:active {
+            transform: translateY(0);
+        }
+
+        .dancing-video-control-btn i {
+            font-size: 16px;
+        }
+
+        .dancing-play-pause-btn {
+            background: rgba(255, 59, 92, 0.8);
+        }
+
+        .dancing-play-pause-btn:hover {
+            background: rgba(255, 59, 92, 1);
+        }
+
+        .dancing-skip-btn {
+            background: rgba(74, 144, 226, 0.8);
+        }
+
+        .dancing-skip-btn:hover {
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .dancing-progress-container {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .dancing-progress-bar {
+            height: 100%;
+            background: #ff3b5c;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .dancing-time-display {
+            position: absolute;
+            bottom: 90px;
+            right: 20px;
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .dancing-video-title {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        /* Vocal Section Styles */
+        .vocal-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .vocal-video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vocal-video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.3s ease;
+        }
+
+        .vocal-video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .vocal-video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .vocal-video-control-btn:active {
+            transform: translateY(0);
+        }
+
+        .vocal-video-control-btn i {
+            font-size: 16px;
+        }
+
+        .vocal-play-pause-btn {
+            background: rgba(255, 59, 92, 0.8);
+        }
+
+        .vocal-play-pause-btn:hover {
+            background: rgba(255, 59, 92, 1);
+        }
+
+        .vocal-skip-btn {
+            background: rgba(74, 144, 226, 0.8);
+        }
+
+        .vocal-skip-btn:hover {
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .vocal-progress-container {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .vocal-progress-bar {
+            height: 100%;
+            background: #ff3b5c;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .vocal-time-display {
+            position: absolute;
+            bottom: 90px;
+            right: 20px;
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .vocal-video-title {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        /* Kirikala Section Styles */
+        .kirikala-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .kirikala-video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .kirikala-controls-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .kirikala-dropdown-menu {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .kirikala-dropdown-menu:hover {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .kirikala-dropdown-menu option {
+            background: #333;
+            color: white;
+        }
+
+        .kirikala-video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.3s ease;
+        }
+
+        .kirikala-video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .kirikala-video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .kirikala-video-control-btn:active {
+            transform: translateY(0);
+        }
+
+        .kirikala-video-control-btn i {
+            font-size: 16px;
+        }
+
+        .kirikala-play-pause-btn {
+            background: rgba(255, 59, 92, 0.8);
+        }
+
+        .kirikala-play-pause-btn:hover {
+            background: rgba(255, 59, 92, 1);
+        }
+
+        .kirikala-skip-btn {
+            background: rgba(74, 144, 226, 0.8);
+        }
+
+        .kirikala-skip-btn:hover {
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .kirikala-progress-container {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .kirikala-progress-bar {
+            height: 100%;
+            background: #ff3b5c;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .kirikala-time-display {
+            position: absolute;
+            bottom: 90px;
+            right: 20px;
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .kirikala-video-title {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        /* Buffet Section Styles */
+        .buffet-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .buffet-video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .buffet-video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.3s ease;
+        }
+
+        .buffet-video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .buffet-video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .buffet-video-control-btn:active {
+            transform: translateY(0);
+        }
+
+        .buffet-video-control-btn i {
+            font-size: 16px;
+        }
+
+        .buffet-play-pause-btn {
+            background: rgba(255, 59, 92, 0.8);
+        }
+
+        .buffet-play-pause-btn:hover {
+            background: rgba(255, 59, 92, 1);
+        }
+
+        .buffet-skip-btn {
+            background: rgba(74, 144, 226, 0.8);
+        }
+
+        .buffet-skip-btn:hover {
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .buffet-progress-container {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .buffet-progress-bar {
+            height: 100%;
+            background: #ff3b5c;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .buffet-time-display {
+            position: absolute;
+            bottom: 90px;
+            right: 20px;
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .buffet-video-title {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(4, 52, 24, 0.15);
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .total-price {
+            background: linear-gradient(135deg, #043418 0%, #02190d 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .hotel-green {
+            color: #043418;
+        }
+
+        .bg-hotel-green {
+            background-color: #043418;
+        }
+
+        .hotel-lime {
+            color: #b6d645;
+        }
+
+        .bg-hotel-lime {
+            background-color: #b6d645;
+        }
+
+        .focus\:border-hotel-lime:focus {
+            border-color: #b6d645;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen font-sans" lang="th">
+    <!-- App Container -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 gradient-bg text-white">
+                <div class="flex items-center justify-center h-16 px-4 border-b border-hotel-lime/20">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-heart text-hotel-lime"></i>
+                        <span class="text-xl font-bold">Green Valley Resort</span>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-grow px-4 py-6 overflow-y-auto custom-scrollbar">
+                    <nav class="space-y-1">
+                        <button onclick="showSection('dashboard')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-tachometer-alt mr-3 text-hotel-lime"></i>
+                            Home
+                        </button>
+                        <button onclick="showSection('packages')" class="sidebar-item active flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-box-open mr-3 text-hotel-lime"></i>
+                            Packages
+                        </button>
+                        <button onclick="showSection('dancing')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-music mr-3 text-hotel-lime"></i>
+                            Dancing Group
+                        </button>
+                        <button onclick="showSection('vocal')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-microphone mr-3 text-hotel-lime"></i>
+                            Vocal Group
+                        </button>
+                        <button onclick="showSection('kirikala')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-glass-cheers mr-3 text-hotel-lime"></i>
+                            Champagne or Kirikala
+                        </button>
+                        <button onclick="showSection('buffet')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-utensils mr-3 text-hotel-lime"></i>
+                            Buffet
+                        </button>
+                        <button onclick="showSection('calculator')" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                            <i class="fas fa-calculator mr-3 text-hotel-lime"></i>
+                            Price Calculator
+                        </button>
+                    </nav>
+                    
+                    <div class="mt-auto pt-6">
+                        <img src="../images/3.png" > 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Mobile Header -->
+            <header class="md:hidden gradient-bg text-white shadow-lg">
+                <div class="container mx-auto px-4 py-3">
+                    <div class="flex items-center justify-between">
+                        <button onclick="toggleMobileMenu()" class="p-2 rounded-md text-gray-200 hover:text-white focus:outline-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div>
+                            <h1 class="text-xl font-bold">Green Valley</h1>
+                            <p class="text-hotel-lime text-xs">Wedding Packages</p>
+                        </div>
+                        <div class="w-8 h-8 bg-hotel-lime rounded-full flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="circular-image">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Mobile Sidebar -->
+            <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40">
+                <div class="fixed inset-0 bg-black bg-opacity-50" onclick="toggleMobileMenu()"></div>
+                <div class="fixed inset-y-0 left-0 w-64 gradient-bg text-white shadow-lg animate-slide-up">
+                    <div class="flex items-center justify-between h-16 px-4 border-b border-hotel-lime/20">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-heart text-hotel-lime"></i>
+                            <span class="text-xl font-bold">Green Valley</span>
+                        </div>
+                        <button onclick="toggleMobileMenu()" class="p-2 rounded-md text-gray-200 hover:text-white focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="px-4 py-4 overflow-y-auto h-[calc(100%-4rem)]">
+                        <nav class="space-y-1">
+                            <button onclick="showSection('dashboard'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-tachometer-alt mr-3 text-hotel-lime"></i>
+                                Home
+                            </button>
+                            <button onclick="showSection('packages'); toggleMobileMenu()" class="sidebar-item active flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-box-open mr-3 text-hotel-lime"></i>
+                                 Wedding Packages
+                            </button>
+                            <button onclick="showSection('dancing'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-music mr-3 text-hotel-lime"></i>
+                                Dancing Group
+                            </button>
+                            <button onclick="showSection('vocal'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-microphone mr-3 text-hotel-lime"></i>
+                                Vocal Group
+                            </button>
+                            <button onclick="showSection('kirikala'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-glass-cheers mr-3 text-hotel-lime"></i>
+                                Champagne or Kirikala
+                            </button>
+                            <button onclick="showSection('buffet'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-utensils mr-3 text-hotel-lime"></i>
+                                Buffet
+                            </button>
+                            <button onclick="showSection('calculator'); toggleMobileMenu()" class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-hotel-green/50">
+                                <i class="fas fa-calculator mr-3 text-hotel-lime"></i>
+                                Price Calculator
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 bg-hotel-light">
+                <!-- Dashboard Section -->
+                <div id="dashboard-section" class="section hidden animate-fade-in">
+                    <div class="video-container">
+                        <video id="dashboard-video" autoplay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="./green_vally_intro.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Wedding Packages Section -->
+                <div id="packages-section" class="section hidden animate-fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-hotel-dark">Wedding Packages</h2>
+                                <p class="text-gray-600">Manage all wedding packages</p>
+                            </div>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <!-- Package Selector Dropdown -->
+                        <div class="relative inline-block text-left ml-4">
+                            <div>
+                                <button type="button" id="package-selector" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-hotel-dark bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none">
+                                    <span id="selector-text">Wedding Packages</span>
+                                    <svg class="-mr-1 ml-2 h-5 w-5 transform transition-transform" id="selector-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Dropdown Options -->
+                            <div id="package-options" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showWeddingPackages()">Wedding Packages</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showPartyPackages()">Party Packages</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Package 1 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 01</h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 3,250/-</div>
+                                <p class="text-gray-600 text-sm mb-4">Perfect for intimate celebrations with essential services.</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink</li>
+                                            <li>• Salads (02)</li>
+                                            <li>• Rice/Noodles (03)</li>
+                                            <li>• Meats (02)</li>
+                                            <li>• Vegetables (04)</li>
+                                            <li>• Condiments (02)</li>
+                                            <li>• Desserts (03)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="./images/Pkg/pkg 01.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <div></div>
+                                    <a href="Package_1.html" class="text-hotel-green hover:underline font-medium">See More →</a>   
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 2 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 02</h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 3,750/-</div>
+                                <p class="text-gray-600 text-sm mb-4">Great value for medium-sized weddings with balanced options.</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink</li>
+                                            <li>• Salads (03)</li>
+                                            <li>• Rice/Noodles (03)</li>
+                                            <li>• Meats (03)</li>
+                                            <li>• Vegetables (05)</li>
+                                            <li>• Condiments (03)</li>
+                                            <li>• Desserts (04)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="./images/Pkg/pkg 02.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <span></span>
+                                    <a href="Package_2.html" class="text-hotel-green hover:underline font-medium">See More →</a>    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 3 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 03</h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 4,250/-</div>
+                                <p class="text-gray-600 text-sm mb-4">Elegant dining experience with premium selections</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink</li>
+                                            <li>• Salads (04)</li>
+                                            <li>• Rice/Noodles (04)</li>
+                                            <li>• Meats (04)</li>
+                                            <li>• Vegetables (05)</li>
+                                            <li>• Condiments (03)</li>
+                                            <li>• Desserts (05)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="./images/Pkg/pkg 03.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <span></span>
+                                    <a href="Package_3.html" class="text-hotel-green hover:underline font-medium">See More →</a>    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 4 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 04</h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 4350/-</div>
+                                <p class="text-gray-600 text-sm mb-4">The ultimate luxury experience with all premium items</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink or Fresh Fruit Juice</li>
+                                            <li>• Salads (04)</li>
+                                            <li>• Rice/Noodles (04)</li>
+                                            <li>• Meats (04)</li>
+                                            <li>• Vegetables (05)</li>
+                                            <li>• Condiments (04)</li>
+                                            <li>• Desserts (05)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="./images/Pkg/pkg 04.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <span></span>
+                                    <a href="Package_4.html" class="text-hotel-green hover:underline font-medium">See More →</a>    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 5 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 05 | <b>Premium Package</b></h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 5,800/-</div>
+                                <p class="text-gray-600 text-sm mb-4">Elegant dining experience with premium selections</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink</li>
+                                            <li>• Salads (03)</li>
+                                            <li>• Rice/Noodles (04)</li>
+                                            <li>• Meats (02)</li>
+                                            <li>• Vegetables (05)</li>
+                                            <li>• Condiments (03)</li>
+                                            <li>• Desserts (05)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="./images/Pkg/pkg 05.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <span></span>
+                                    <a href="Package_6.html" class="text-hotel-green hover:underline font-medium">See More →</a>    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package 5 
+                        <br>
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-hotel-lime text-hotel-green text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-hotel-green mb-2">Menu 05 | <b>Premium Package</b></h3>
+                                <div class="text-2xl font-bold text-hotel-green mb-3">Rs. 4350/-</div>
+                                <p class="text-gray-600 text-sm mb-4">The ultimate luxury experience with all premium items</p>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-hotel-green mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drink or Fresh Fruit Juice</li>
+                                            <li>• Salads (04)</li>
+                                            <li>• Rice/Noodles (04)</li>
+                                            <li>• Meats (04)</li>
+                                            <li>• Vegetables (05)</li>
+                                            <li>• Condiments (04)</li>
+                                            <li>• Desserts (05)</li>
+                                            <li>• Ice Coffee</li>
+                                        </ul>
+                                        <div class="w-40 h-40 bg-hotel-green rounded-full flex items-center justify-center overflow-hidden border-4 border-green-800">
+                                            <div class="w-40 h-40 rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                                                <img 
+                                                    src="../images/Pkg/pkg 04.png" 
+                                                    alt="Profile Picture" 
+                                                    class="w-full h-full object-cover rounded-full border-2 border-green-600">
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                                
+                                <div class="border-b my-4" style="border-color: #043418; border-width: 1px;"></div>
+                                <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+                                    <span></span>
+                                    <a href="Package_4.html" class="text-hotel-green hover:underline font-medium">See More →</a>    
+                                </div>
+                            </div>
+                        </div>  -->  
+                    </div>
+                </div>
+
+                <!-- Party Packages Section -->
+                <div id="party-packages" class="section hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-hotel-dark">Party Packages</h2>
+                                <p class="text-gray-600">Manage all party packages</p>
+                            </div>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <!-- Package Selector Dropdown -->
+                        <div class="relative inline-block text-left ml-4">
+                            <div>
+                                <button type="button" id="package-selector-party" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-hotel-dark bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none">
+                                    <span>Party Packages</span>
+                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Dropdown Options -->
+                            <div id="package-options-party" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showWeddingPackages()">Wedding Packages</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showPartyPackages()">Party Packages</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Party Package 1 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-purple-100 text-purple-800 text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-purple-700 mb-2">Menu 01 | LUNCH OR DINNER</h3>
+                                <div class="text-2xl font-bold text-purple-700 mb-3">Rs. 1,850/-</div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-purple-700 mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Juice</li>
+                                            <li>• VEG / FRIED RICE</li>
+                                            <li>• Snacks (05)</li>
+                                            <li>• VEG / FRIED NOODLES</li>
+                                            <li>• CHICKEN RED CURRY</li>
+                                            <li>• POTATO TEMPERED </li>
+                                            <li>• DHAL CURRY</li>
+                                            <li>• TOMATO & CUCUMBER SALAD</li>
+                                            <li>• PAPADAM</li>
+                                            <br>
+                                            <li>• ICE CREAM</li>
+                                            <li>• CREAM CARAMEL</li>
+                                            
+                                        </ul>
+                                        <!-- <div class="w-30 h-30 bg-purple-100 rounded-full flex items-center justify-center overflow-hidden">
+                                            <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">🎂</div>
+                                        </div> -->
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #7c3aed; border-width: 1px;"></div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Party Package 2 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-orange-100 text-orange-800 text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-orange-700 mb-2">Menu 02 | LUNCH OR DINNER</h3>
+                                <div class="text-2xl font-bold text-orange-700 mb-3">Rs. 1,950/-</div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-orange-700 mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Welcome Drinks</li>
+                                            <li>• PLAIN RICE</li>
+                                            <li>• YELLOW RICE / VEGETABLE RICE</li>
+                                            <li>• VEG / FRIED NOODLES</li>
+                                            <li>• FRIED CHICKEN CURRY</li>
+                                            <li>• FISH DEVILLED</li>
+                                            <li>• MIX VEGETABLE CURRY</li>
+                                            <li>• DHAL TEMPERED OR DHAL CURRY</li>
+                                            <li>• MANGO CHUTNEY</li>
+                                            <li>• PAPADAM</li><br>
+                                            <li>• ICE CREAM WITH CHOCOLATE SOUSE</li>
+                                            <li>• FRESH FRUITS</li>
+                                        </ul>
+                                        <!-- <div class="w-30 h-30 bg-orange-100 rounded-full flex items-center justify-center overflow-hidden">
+                                            <div class="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">🏢</div>
+                                        </div> -->
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #ea580c; border-width: 1px;"></div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Party Package 3 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-pink-100 text-pink-800 text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-pink-700 mb-2">Menu 03 | DINNER</h3>
+                                <div class="text-2xl font-bold text-pink-700 mb-3">Rs. 1,950</div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-pink-700 mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• WELCOME DRINK</li>
+                                            <li>• VEG / FRIED NOODLES</li>
+                                            <li>• STRING HOPPERS</li>
+                                            <li>• CHICKEN RED CURRY</li>
+                                            <li>• FISH STEW </li>
+                                            <li>• POTATO WHITE CURRY</li>
+                                            <li>• DHAL CURRY</li>
+                                            <li>• POL SAMBOL</li><br>
+                                            <li>• WATALAPPAM</li>
+                                            <li>• ICE CREAM</li>
+                                        </ul>
+                                        <!-- <div class="w-30 h-30 bg-pink-100 rounded-full flex items-center justify-center overflow-hidden">
+                                            <div class="w-20 h-20 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold">💕</div>
+                                        </div> -->
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #be185d; border-width: 1px;"></div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Party Package 4 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-blue-700 mb-2">Menu 04 | LUNCH OR DINNER</h3>
+                                <div class="text-2xl font-bold text-blue-700 mb-3">Rs. 2,150/-</div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-blue-700 mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• WELCOME DRINK</li>
+                                            <li>• PLAIN RICE</li>
+                                            <li>• YELLOW RICE / VEGETABLE RICE</li>
+                                            <li>• VEG / FRIED NOODLES</li>
+                                            <li>• FRIED CHICKEN CURRY</li>
+                                            <li>• FISH DEVILLED or PEPPER PORK CURRY</li>
+                                            <li>• POTATO TEMPERED</li>
+                                            <li>• DHAL CURRY</li>
+                                            <li>• MALAY PICKLE</li>
+                                            <li>• PAPADAM</li><br>
+                                            <li>• ICE CREAM WITH CHOCOLATE SOUSE </li>
+                                            <li>• FRESH FRUITS</li>
+                                        </ul>
+                                        <!-- <div class="w-30 h-30 bg-blue-100 rounded-full flex items-center justify-center overflow-hidden">
+                                            <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">🎓</div>
+                                        </div> -->
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #1d4ed8; border-width: 1px;"></div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Party Package 5 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-bold py-2 px-3 text-center"></div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-blue-700 mb-2">PARTY</h3>
+                                <div class="text-2xl font-bold text-blue-700 mb-3">Rs. 1,750/-</div>
+                                
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-blue-700 mb-2">Included Items:</h4>
+                                    <div class="grid grid-cols-2 gap-4">  
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• WELCOME DRINK</li>
+                                            <li>• VEG / FRIED RICE</li>
+                                            <li>• VEG / FRIED NOODLES</li>
+                                            <li>• DEVILED CHICKEN</li>
+                                            <li>• VEGETABLE CHOPSUEY</li>
+                                            <li>• CHILLI PASTE</li><br>
+                                            <li>• ICE CREAM</li>
+                                        </ul>
+                                        <!-- <div class="w-30 h-30 bg-blue-100 rounded-full flex items-center justify-center overflow-hidden">
+                                            <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">🎓</div>
+                                        </div> -->
+                                    </div>     
+                                </div>
+                                <div class="border-b my-4" style="border-color: #1d4ed8; border-width: 1px;"></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dancing Group Section -->
+                <div id="dancing-section" class="section hidden animate-fade-in relative h-full">
+                    <div class="dancing-video-title" id="dancing-video-title"></div>
+                    <div class="dancing-controls-overlay">
+                        <select id="team-dropdown" class="dancing-dropdown-menu" onchange="changeDancingTeam(this.value)">
+                            <option value="wes-dance">Wes Dance</option>
+                            <option value="item-dance">Item Dance</option>
+                        </select>
+                    </div>
+
+
+                    <div class="dancing-video-container">
+                        <video id="dancing-video" muted loop playsinline class="dancing-video-player">
+                            <source id="dancing-video-source" src="./Dancing Team.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        <div class="dancing-progress-container" onclick="setDancingProgress(event)">
+                            <div class="dancing-progress-bar" id="dancing-progress-bar"></div>
+                        </div>
+
+                        <div class="dancing-time-display" id="dancing-time-display">0:00 / 0:00</div>
+
+                        <div class="dancing-video-controls">
+                            
+                            <button class="dancing-video-control-btn dancing-skip-btn" onclick="dancingSkipBackward()">
+                                <i class="fas fa-backward"></i>
+                                Back 10s
+                            </button>
+                            <button class="dancing-video-control-btn dancing-play-pause-btn" onclick="toggleDancingPlayPause()">
+                                <i id="dancing-play-pause-icon" class="fas fa-play"></i>
+                                <span id="dancing-play-pause-text">Play</span>
+                            </button>
+                            <button class="dancing-video-control-btn dancing-skip-btn" onclick="dancingSkipForward()">
+                                <i class="fas fa-forward"></i>
+                                Skip 10s
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vocal Group Section -->
+                <div id="vocal-section" class="section hidden animate-fade-in relative h-full">
+                    <div class="vocal-video-title" id="vocal-video-title"></div>
+
+                    <div class="vocal-video-container">
+                        <video id="vocal-video" muted loop playsinline class="vocal-video-player">
+                            <source id="vocal-video-source" src="./Vocal Music.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        <div class="vocal-progress-container" onclick="setVocalProgress(event)">
+                            <div class="vocal-progress-bar" id="vocal-progress-bar"></div>
+                        </div>
+
+                        <div class="vocal-time-display" id="vocal-time-display">0:00 / 0:00</div>
+
+                        <div class="vocal-video-controls">
+                            <button class="vocal-video-control-btn vocal-skip-btn" onclick="vocalSkipBackward()">
+                                <i class="fas fa-backward"></i>
+                                Back 10s
+                            </button>
+                            <button class="vocal-video-control-btn vocal-play-pause-btn" onclick="toggleVocalPlayPause()">
+                                <i id="vocal-play-pause-icon" class="fas fa-play"></i>
+                                <span id="vocal-play-pause-text">Play</span>
+                            </button>
+                            <button class="vocal-video-control-btn vocal-skip-btn" onclick="vocalSkipForward()">
+                                <i class="fas fa-forward"></i>
+                                Skip 10s
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kirikala/Champagne Section -->
+                <div id="kirikala-section" class="section hidden animate-fade-in relative h-full">
+                    <div class="kirikala-controls-overlay">
+                        <select id="kirikala-dropdown" class="kirikala-dropdown-menu" onchange="changeKirikalaVideo(this.value)">
+                            <option value="champagne">Champagne</option>
+                            <option value="kirikala">Kirikala</option>
+                        </select>
+                    </div>
+
+                    <div class="kirikala-video-title" id="kirikala-video-title"></div>
+
+                    <div class="kirikala-video-container">
+                        <video id="kirikala-video" muted loop playsinline class="kirikala-video-player">
+                            <source id="kirikala-video-source" src="./Champaign.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        <div class="kirikala-progress-container" onclick="setKirikalaProgress(event)">
+                            <div class="kirikala-progress-bar" id="kirikala-progress-bar"></div>
+                        </div>
+
+                        <div class="kirikala-time-display" id="kirikala-time-display">0:00 / 0:00</div>
+
+                        <div class="kirikala-video-controls">
+                            <button class="kirikala-video-control-btn kirikala-skip-btn" onclick="kirikalaSkipBackward()">
+                                <i class="fas fa-backward"></i>
+                                Back 10s
+                            </button>
+                            <button class="kirikala-video-control-btn kirikala-play-pause-btn" onclick="toggleKirikalaPlayPause()">
+                                <i id="kirikala-play-pause-icon" class="fas fa-play"></i>
+                                <span id="kirikala-play-pause-text">Play</span>
+                            </button>
+                            <button class="kirikala-video-control-btn kirikala-skip-btn" onclick="kirikalaSkipForward()">
+                                <i class="fas fa-forward"></i>
+                                Skip 10s
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buffet Section -->
+                <div id="buffet-section" class="section hidden animate-fade-in relative h-full">
+
+                    <div class="buffet-video-container">
+                        <video id="buffet-video" muted loop playsinline class="buffet-video-player">
+                            <source id="buffet-video-source" src="./Buffet.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        <div class="buffet-progress-container" onclick="setBuffetProgress(event)">
+                            <div class="buffet-progress-bar" id="buffet-progress-bar"></div>
+                        </div>
+
+                        <div class="buffet-time-display" id="buffet-time-display">0:00 / 0:00</div>
+
+                        <div class="buffet-video-controls">
+                            <button class="buffet-video-control-btn buffet-skip-btn" onclick="buffetSkipBackward()">
+                                <i class="fas fa-backward"></i>
+                                Back 10s
+                            </button>
+                            <button class="buffet-video-control-btn buffet-play-pause-btn" onclick="toggleBuffetPlayPause()">
+                                <i id="buffet-play-pause-icon" class="fas fa-play"></i>
+                                <span id="buffet-play-pause-text">Play</span>
+                            </button>
+                            <button class="buffet-video-control-btn buffet-skip-btn" onclick="buffetSkipForward()">
+                                <i class="fas fa-forward"></i>
+                                Skip 10s
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Calculator Section -->
+                <div id="calculator-section" class="section animate-fade-in p-6">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-hotel-dark">Wedding Package Calculator</h2>
+                        <p class="text-gray-600">Calculate estimated costs for wedding packages</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-xl shadow-sm p-6 hover-scale">
+                                <h3 class="text-lg font-semibold text-hotel-green mb-4">Event Details</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Type</label>
+                                        <select id="event-type" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" onchange="handleEventTypeChange()">
+                                            <option value="wedding">Wedding</option>
+                                            <option value="anniversary">Anniversary</option>
+                                            <option value="engagement">Engagement</option>
+                                            <option value="party">Party</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
+                                        <input type="date" id="event-date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" onchange="calculatePrice()">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+                                        <input type="number" id="guests" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" placeholder="Enter number of guests" oninput="handleGuestChange()">
+                                    </div>
+                                    <div id="hall-selection-container">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Hall Selection</label>
+                                        <select id="hall-selection" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" onchange="calculatePrice()">
+                                            <option value="prince">Prince Banquet Hall</option>
+                                            <option value="angelo">Angelo Banquet Hall</option>
+                                            <option value="ru">Ru Banquet Hall</option>
+                                        </select>
+                                    </div>
+                                    <div id="package-type-container">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Package Type</label>
+                                        <select id="package-type" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" onchange="handlePackageChange()">
+                                            <option value="3250">Banquet Hall Menu 01 - Rs. 3,250</option>
+                                            <option value="3750">Banquet Hall Menu 02 - Rs. 3,750</option>
+                                            <option value="4250">Banquet Hall Menu 03 - Rs. 4,250</option>
+                                            <option value="4850">Banquet Hall Menu 04 - Rs. 4,850</option>
+                                            <option value="5800">All-Inclusive Package - Rs. 5,800</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Bites Selection (1kg)</label>
+                                        <input type="number" id="bites-qty" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-hotel-lime focus:border-hotel-lime" placeholder="Enter quantity in kg" min="0" oninput="calculatePrice()">
+                                        <small class="text-gray-500">Rs. 1,200 per kg</small>
+                                    </div>
+                                </div>
+                                
+                                <!-- Extra Dishes Section -->
+                                <div class="mt-6">
+                                    <h3 class="text-lg font-semibold text-hotel-green mb-4">Extra Dishes</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Cream of Vegetable Soup (Rs. 300)</label>
+                                            <input type="number" id="chicken-curry" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Rice (Basmathi) (Rs. 150)</label>
+                                            <input type="number" id="fish-curry" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Prawns (Rs. 350)</label>
+                                            <input type="number" id="mutton-curry" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Seafood Mix Deviled (Rs. 400)</label>
+                                            <input type="number" id="vegetable-curry" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Pork (Rs. 300)</label>
+                                            <input type="number" id="fried-rice" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Cuttle Fish (Rs. 300)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Jelly (Rs. 150)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Caramel (Rs. 250)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Chocolate Mouse (Rs. 300)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Mashroom (Rs. 150)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2"> Malay Pickle (Rs. 100)</label>
+                                            <input type="number" id="noodles" class="w-full border border-gray-300 rounded-lg px-2 py-1 focus:ring-hotel-lime focus:border-hotel-lime" min="0" placeholder="Quantity" oninput="calculatePrice()">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="additional-services-section">
+                                    <h3 class="text-lg font-semibold text-hotel-green mt-6 mb-4">Additional Services</h3>
+                                    <div class="space-y-3" id="additional-services-container">
+                                        <!-- Services will be populated based on event type -->
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6">
+                                    <button onclick="calculatePrice()" class="w-full bg-hotel-lime text-hotel-green py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                                        <i class="fas fa-calculator mr-2"></i> Calculate Total
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="bg-white rounded-xl shadow-sm p-6 sticky top-6 hover-scale">
+                                <h3 class="text-lg font-semibold text-hotel-green mb-4">Price Breakdown</h3>
+                                <div id="price-breakdown" class="space-y-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <p class="text-gray-500 text-center">Enter event details to see price breakdown</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 hidden" id="quote-actions">
+                                    <button class="w-full bg-hotel-green text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors mb-3" onclick="generateQuote()">
+                                        <i class="fas fa-file-invoice-dollar mr-2"></i> Generate Quote
+                                    </button>
+                                    <button class="w-full border border-hotel-green text-hotel-green py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors" onclick="shareViaWhatsApp()">
+                                        <i class="fab fa-whatsapp mr-2"></i> Share via WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quote Modal -->
+                    <div id="quote-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+                        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                            <div class="p-6">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h3 class="text-2xl font-bold text-hotel-green">Package Quote</h3>
+                                    <button onclick="closeQuoteModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                                </div>
+                                
+                                <div id="quote-content" class="space-y-4">
+                                    <!-- Quote content will be generated here -->
+                                </div>
+                                
+                                <div class="mt-6 flex gap-3">
+                                    <button onclick="downloadVisualPDF()" class="flex-1 bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                                        <i class="fas fa-download mr-2"></i> Download PDF
+                                    </button>
+                                    <button onclick="shareViaWhatsApp()" class="flex-1 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                                        <i class="fab fa-whatsapp mr-2"></i> Share via WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Show specific section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the requested section
+            const section = document.getElementById(sectionId + '-section');
+            if (section) {
+                section.classList.remove('hidden');
+            }
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find the button that triggered this and make it active
+            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Special case for packages section
+            if (sectionId === 'packages') {
+                showWeddingPackages();
+            }
+
+            // Special case for dancing section - initialize video
+            if (sectionId === 'dancing') {
+                initializeDancingVideo();
+            }
+        }
+
+        // Toggle dropdown functionality
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Show wedding packages
+        function showWeddingPackages() {
+            document.getElementById('packages-section').classList.remove('hidden');
+            document.getElementById('party-packages').classList.add('hidden');
+            document.getElementById('selector-text').textContent = 'Wedding Packages';
+            
+            // Close dropdowns
+            document.getElementById('package-options').classList.add('hidden');
+            document.getElementById('package-options-party').classList.add('hidden');
+        }
+
+        // Show party packages
+        function showPartyPackages() {
+            document.getElementById('packages-section').classList.add('hidden');
+            document.getElementById('party-packages').classList.remove('hidden');
+            document.getElementById('selector-text').textContent = 'Party Packages';
+            
+            // Close dropdowns
+            document.getElementById('package-options').classList.add('hidden');
+            document.getElementById('package-options-party').classList.add('hidden');
+        }
+
+        // ========================== Dancing Video Functions =========================
+        function initializeDancingVideo() {
+            const video = document.getElementById('dancing-video');
+            const playPauseIcon = document.getElementById('dancing-play-pause-icon');
+            const playPauseText = document.getElementById('dancing-play-pause-text');
+            const progressBar = document.getElementById('dancing-progress-bar');
+            const timeDisplay = document.getElementById('dancing-time-display');
+            
+            // Check if event listeners are already added
+            if (!video.hasListeners) {
+                video.addEventListener('loadedmetadata', updateDancingTimeDisplay);
+                video.addEventListener('timeupdate', updateDancingProgress);
+                video.addEventListener('ended', onDancingVideoEnded);
+                video.hasListeners = true;
+            }
+            
+            // Auto-play the video
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            updateDancingPlayPauseButton();
+        }
+
+        // Toggle play/pause for dancing video
+        function toggleDancingPlayPause() {
+            const video = document.getElementById('dancing-video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            updateDancingPlayPauseButton();
+        }
+
+        // Update play/pause button for dancing video
+        function updateDancingPlayPauseButton() {
+            const video = document.getElementById('dancing-video');
+            const playPauseIcon = document.getElementById('dancing-play-pause-icon');
+            const playPauseText = document.getElementById('dancing-play-pause-text');
+            
+            if (video.paused) {
+                playPauseIcon.className = 'fas fa-play';
+                playPauseText.textContent = 'Play';
+            } else {
+                playPauseIcon.className = 'fas fa-pause';
+                playPauseText.textContent = 'Pause';
+            }
+        }
+
+        // Skip forward 10 seconds for dancing video
+        function dancingSkipForward() {
+            const video = document.getElementById('dancing-video');
+            video.currentTime += 10;
+        }
+
+        // Skip backward 10 seconds for dancing video
+        function dancingSkipBackward() {
+            const video = document.getElementById('dancing-video');
+            video.currentTime -= 10;
+        }
+
+        // Change dancing team/video
+        function changeDancingTeam(teamKey) {
+            const videos = {
+                'wes-dance': {
+                    src: './Dancing Team.mp4',
+                    title: 'Wes Dance'
+                },
+                'item-dance': {
+                    src: './Item Dance.mp4',
+                    title: ''
+                }
+            };
+            
+            const selectedVideo = videos[teamKey];
+            if (selectedVideo) {
+                const video = document.getElementById('dancing-video');
+                const videoSource = document.getElementById('dancing-video-source');
+                const videoTitle = document.getElementById('dancing-video-title');
+                
+                const wasPlaying = !video.paused;
+                const currentTime = video.currentTime;
+                
+                videoSource.src = selectedVideo.src;
+                videoTitle.textContent = selectedVideo.title;
+                video.load();
+                
+                if (wasPlaying) {
+                    video.play().catch(e => console.log('Play failed:', e));
+                }
+            }
+        }
+
+        // Update progress bar for dancing video
+        function updateDancingProgress() {
+            const video = document.getElementById('dancing-video');
+            const progressBar = document.getElementById('dancing-progress-bar');
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = progress + '%';
+            updateDancingTimeDisplay();
+        }
+
+        // Set progress when clicking on progress bar for dancing video
+        function setDancingProgress(e) {
+            const video = document.getElementById('dancing-video');
+            const progressContainer = e.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            video.currentTime = percentage * video.duration;
+        }
+
+        // Update time display for dancing video
+        function updateDancingTimeDisplay() {
+            const video = document.getElementById('dancing-video');
+            const timeDisplay = document.getElementById('dancing-time-display');
+            const currentTime = formatDancingTime(video.currentTime);
+            const duration = formatDancingTime(video.duration);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        }
+
+        // Format time in MM:SS for dancing video
+        function formatDancingTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Handle video end for dancing video
+        function onDancingVideoEnded() {
+            updateDancingPlayPauseButton();
+        }
+
+        // Keyboard controls for dancing video
+        document.addEventListener('keydown', function(e) {
+            // Only handle if dancing section is visible
+            if (!document.getElementById('dancing-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleDancingPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        dancingSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        dancingSkipForward();
+                        break;
+                }
+            }
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show packages section by default
+            showSection('packages');
+            
+            // Event listeners for dropdown toggles
+            document.getElementById('package-selector').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown('package-options');
+                document.getElementById('package-options-party').classList.add('hidden');
+            });
+
+            document.getElementById('package-selector-party').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown('package-options-party');
+                document.getElementById('package-options').classList.add('hidden');
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#package-selector') && !e.target.closest('#package-options')) {
+                    document.getElementById('package-options').classList.add('hidden');
+                }
+                if (!e.target.closest('#package-selector-party') && !e.target.closest('#package-options-party')) {
+                    document.getElementById('package-options-party').classList.add('hidden');
+                }
+            });
+
+            // Prevent dropdown links from causing page jumps
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+
+        // ============================= Vocal Video Functions ================================
+        function initializeVocalVideo() {
+            const video = document.getElementById('vocal-video');
+            const playPauseIcon = document.getElementById('vocal-play-pause-icon');
+            const playPauseText = document.getElementById('vocal-play-pause-text');
+            const progressBar = document.getElementById('vocal-progress-bar');
+            const timeDisplay = document.getElementById('vocal-time-display');
+            
+            // Check if event listeners are already added
+            if (!video.hasListeners) {
+                video.addEventListener('loadedmetadata', updateVocalTimeDisplay);
+                video.addEventListener('timeupdate', updateVocalProgress);
+                video.addEventListener('ended', onVocalVideoEnded);
+                video.hasListeners = true;
+            }
+            
+            // Auto-play the video
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            updateVocalPlayPauseButton();
+        }
+
+        // Toggle play/pause for vocal video
+        function toggleVocalPlayPause() {
+            const video = document.getElementById('vocal-video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            updateVocalPlayPauseButton();
+        }
+
+        // Update play/pause button for vocal video
+        function updateVocalPlayPauseButton() {
+            const video = document.getElementById('vocal-video');
+            const playPauseIcon = document.getElementById('vocal-play-pause-icon');
+            const playPauseText = document.getElementById('vocal-play-pause-text');
+            
+            if (video.paused) {
+                playPauseIcon.className = 'fas fa-play';
+                playPauseText.textContent = 'Play';
+            } else {
+                playPauseIcon.className = 'fas fa-pause';
+                playPauseText.textContent = 'Pause';
+            }
+        }
+
+        // Skip forward 10 seconds for vocal video
+        function vocalSkipForward() {
+            const video = document.getElementById('vocal-video');
+            video.currentTime += 10;
+        }
+
+        // Skip backward 10 seconds for vocal video
+        function vocalSkipBackward() {
+            const video = document.getElementById('vocal-video');
+            video.currentTime -= 10;
+        }
+
+        // Update progress bar for vocal video
+        function updateVocalProgress() {
+            const video = document.getElementById('vocal-video');
+            const progressBar = document.getElementById('vocal-progress-bar');
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = progress + '%';
+            updateVocalTimeDisplay();
+        }
+
+        // Set progress when clicking on progress bar for vocal video
+        function setVocalProgress(e) {
+            const video = document.getElementById('vocal-video');
+            const progressContainer = e.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            video.currentTime = percentage * video.duration;
+        }
+
+        // Update time display for vocal video
+        function updateVocalTimeDisplay() {
+            const video = document.getElementById('vocal-video');
+            const timeDisplay = document.getElementById('vocal-time-display');
+            const currentTime = formatVocalTime(video.currentTime);
+            const duration = formatVocalTime(video.duration);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        }
+
+        // Format time in MM:SS for vocal video
+        function formatVocalTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Handle video end for vocal video
+        function onVocalVideoEnded() {
+            updateVocalPlayPauseButton();
+        }
+
+        // Update the showSection function to include vocal video initialization
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the requested section
+            const section = document.getElementById(sectionId + '-section');
+            if (section) {
+                section.classList.remove('hidden');
+            }
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find the button that triggered this and make it active
+            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Special case for packages section
+            if (sectionId === 'packages') {
+                showWeddingPackages();
+            }
+            
+            // Special case for dancing section - initialize video
+            if (sectionId === 'dancing') {
+                initializeDancingVideo();
+            }
+            
+            // Special case for vocal section - initialize video
+            if (sectionId === 'vocal') {
+                initializeVocalVideo();
+            }
+        }
+
+        // Enhanced keyboard controls to include vocal video
+        document.addEventListener('keydown', function(e) {
+            // Handle vocal section
+            if (!document.getElementById('vocal-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleVocalPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        vocalSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        vocalSkipForward();
+                        break;
+                }
+            }
+            // Handle dancing section
+            else if (!document.getElementById('dancing-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleDancingPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        dancingSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        dancingSkipForward();
+                        break;
+                }
+            }
+        });
+
+        // ======================= Kirikala Video Functions ===============================
+        function initializeKirikalaVideo() {
+            const video = document.getElementById('kirikala-video');
+            const playPauseIcon = document.getElementById('kirikala-play-pause-icon');
+            const playPauseText = document.getElementById('kirikala-play-pause-text');
+            const progressBar = document.getElementById('kirikala-progress-bar');
+            const timeDisplay = document.getElementById('kirikala-time-display');
+            
+            // Check if event listeners are already added
+            if (!video.hasListeners) {
+                video.addEventListener('loadedmetadata', updateKirikalaTimeDisplay);
+                video.addEventListener('timeupdate', updateKirikalaProgress);
+                video.addEventListener('ended', onKirikalaVideoEnded);
+                video.hasListeners = true;
+            }
+            
+            // Auto-play the video
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            updateKirikalaPlayPauseButton();
+        }
+
+        // Toggle play/pause for kirikala video
+        function toggleKirikalaPlayPause() {
+            const video = document.getElementById('kirikala-video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            updateKirikalaPlayPauseButton();
+        }
+
+        // Update play/pause button for kirikala video
+        function updateKirikalaPlayPauseButton() {
+            const video = document.getElementById('kirikala-video');
+            const playPauseIcon = document.getElementById('kirikala-play-pause-icon');
+            const playPauseText = document.getElementById('kirikala-play-pause-text');
+            
+            if (video.paused) {
+                playPauseIcon.className = 'fas fa-play';
+                playPauseText.textContent = 'Play';
+            } else {
+                playPauseIcon.className = 'fas fa-pause';
+                playPauseText.textContent = 'Pause';
+            }
+        }
+
+        // Skip forward 10 seconds for kirikala video
+        function kirikalaSkipForward() {
+            const video = document.getElementById('kirikala-video');
+            video.currentTime += 10;
+        }
+
+        // Skip backward 10 seconds for kirikala video
+        function kirikalaSkipBackward() {
+            const video = document.getElementById('kirikala-video');
+            video.currentTime -= 10;
+        }
+
+        // Change kirikala video type
+        function changeKirikalaVideo(videoType) {
+            const videos = {
+                'champagne': {
+                    src: './Champaign.mp4',
+                    title: ''
+                },
+                'kirikala': {
+                    src: './kirikala.mp4',
+                    title: ''
+                }
+            };
+            
+            const selectedVideo = videos[videoType];
+            if (selectedVideo) {
+                const video = document.getElementById('kirikala-video');
+                const videoSource = document.getElementById('kirikala-video-source');
+                const videoTitle = document.getElementById('kirikala-video-title');
+                
+                const wasPlaying = !video.paused;
+                const currentTime = video.currentTime;
+                
+                videoSource.src = selectedVideo.src;
+                videoTitle.textContent = selectedVideo.title;
+                video.load();
+                
+                if (wasPlaying) {
+                    video.play().catch(e => console.log('Play failed:', e));
+                }
+            }
+        }
+
+        // Update progress bar for kirikala video
+        function updateKirikalaProgress() {
+            const video = document.getElementById('kirikala-video');
+            const progressBar = document.getElementById('kirikala-progress-bar');
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = progress + '%';
+            updateKirikalaTimeDisplay();
+        }
+
+        // Set progress when clicking on progress bar for kirikala video
+        function setKirikalaProgress(e) {
+            const video = document.getElementById('kirikala-video');
+            const progressContainer = e.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            video.currentTime = percentage * video.duration;
+        }
+
+        // Update time display for kirikala video
+        function updateKirikalaTimeDisplay() {
+            const video = document.getElementById('kirikala-video');
+            const timeDisplay = document.getElementById('kirikala-time-display');
+            const currentTime = formatKirikalaTime(video.currentTime);
+            const duration = formatKirikalaTime(video.duration);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        }
+
+        // Format time in MM:SS for kirikala video
+        function formatKirikalaTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Handle video end for kirikala video
+        function onKirikalaVideoEnded() {
+            updateKirikalaPlayPauseButton();
+        }
+
+        // Update the showSection function to include kirikala video initialization
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the requested section
+            const section = document.getElementById(sectionId + '-section');
+            if (section) {
+                section.classList.remove('hidden');
+            }
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find the button that triggered this and make it active
+            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Special case for packages section
+            if (sectionId === 'packages') {
+                showWeddingPackages();
+            }
+            
+            // Special case for dancing section - initialize video
+            if (sectionId === 'dancing') {
+                initializeDancingVideo();
+            }
+            
+            // Special case for vocal section - initialize video
+            if (sectionId === 'vocal') {
+                initializeVocalVideo();
+            }
+            
+            // Special case for kirikala section - initialize video
+            if (sectionId === 'kirikala') {
+                initializeKirikalaVideo();
+            }
+        }
+
+        // Enhanced keyboard controls to include kirikala video
+        document.addEventListener('keydown', function(e) {
+            // Handle kirikala section
+            if (!document.getElementById('kirikala-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleKirikalaPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        kirikalaSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        kirikalaSkipForward();
+                        break;
+                }
+            }
+            // Handle vocal section
+            else if (!document.getElementById('vocal-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleVocalPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        vocalSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        vocalSkipForward();
+                        break;
+                }
+            }
+            // Handle dancing section
+            else if (!document.getElementById('dancing-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleDancingPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        dancingSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        dancingSkipForward();
+                        break;
+                }
+            }
+        });
+
+        // Buffet Video Functions
+        function initializeBuffetVideo() {
+            const video = document.getElementById('buffet-video');
+            const playPauseIcon = document.getElementById('buffet-play-pause-icon');
+            const playPauseText = document.getElementById('buffet-play-pause-text');
+            const progressBar = document.getElementById('buffet-progress-bar');
+            const timeDisplay = document.getElementById('buffet-time-display');
+            
+            // Check if event listeners are already added
+            if (!video.hasListeners) {
+                video.addEventListener('loadedmetadata', updateBuffetTimeDisplay);
+                video.addEventListener('timeupdate', updateBuffetProgress);
+                video.addEventListener('ended', onBuffetVideoEnded);
+                video.hasListeners = true;
+            }
+            
+            // Auto-play the video
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            updateBuffetPlayPauseButton();
+        }
+
+        // Toggle play/pause for buffet video
+        function toggleBuffetPlayPause() {
+            const video = document.getElementById('buffet-video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            updateBuffetPlayPauseButton();
+        }
+
+        // Update play/pause button for buffet video
+        function updateBuffetPlayPauseButton() {
+            const video = document.getElementById('buffet-video');
+            const playPauseIcon = document.getElementById('buffet-play-pause-icon');
+            const playPauseText = document.getElementById('buffet-play-pause-text');
+            
+            if (video.paused) {
+                playPauseIcon.className = 'fas fa-play';
+                playPauseText.textContent = 'Play';
+            } else {
+                playPauseIcon.className = 'fas fa-pause';
+                playPauseText.textContent = 'Pause';
+            }
+        }
+
+        // Skip forward 10 seconds for buffet video
+        function buffetSkipForward() {
+            const video = document.getElementById('buffet-video');
+            video.currentTime += 10;
+        }
+
+        // Skip backward 10 seconds for buffet video
+        function buffetSkipBackward() {
+            const video = document.getElementById('buffet-video');
+            video.currentTime -= 10;
+        }
+
+        // Update progress bar for buffet video
+        function updateBuffetProgress() {
+            const video = document.getElementById('buffet-video');
+            const progressBar = document.getElementById('buffet-progress-bar');
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = progress + '%';
+            updateBuffetTimeDisplay();
+        }
+
+        // Set progress when clicking on progress bar for buffet video
+        function setBuffetProgress(e) {
+            const video = document.getElementById('buffet-video');
+            const progressContainer = e.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            video.currentTime = percentage * video.duration;
+        }
+
+        // Update time display for buffet video
+        function updateBuffetTimeDisplay() {
+            const video = document.getElementById('buffet-video');
+            const timeDisplay = document.getElementById('buffet-time-display');
+            const currentTime = formatBuffetTime(video.currentTime);
+            const duration = formatBuffetTime(video.duration);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        }
+
+        // Format time in MM:SS for buffet video
+        function formatBuffetTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Handle video end for buffet video
+        function onBuffetVideoEnded() {
+            updateBuffetPlayPauseButton();
+        }
+
+        // Update the showSection function to include buffet video initialization
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the requested section
+            const section = document.getElementById(sectionId + '-section');
+            if (section) {
+                section.classList.remove('hidden');
+            }
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find the button that triggered this and make it active
+            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Special case for packages section
+            if (sectionId === 'packages') {
+                showWeddingPackages();
+            }
+            
+            // Special case for dancing section - initialize video
+            if (sectionId === 'dancing') {
+                initializeDancingVideo();
+            }
+            
+            // Special case for vocal section - initialize video
+            if (sectionId === 'vocal') {
+                initializeVocalVideo();
+            }
+            
+            // Special case for kirikala section - initialize video
+            if (sectionId === 'kirikala') {
+                initializeKirikalaVideo();
+            }
+            
+            // Special case for buffet section - initialize video
+            if (sectionId === 'buffet') {
+                initializeBuffetVideo();
+            }
+        }
+
+        // Enhanced keyboard controls to include buffet video
+        document.addEventListener('keydown', function(e) {
+            // Handle buffet section
+            if (!document.getElementById('buffet-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleBuffetPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        buffetSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        buffetSkipForward();
+                        break;
+                }
+            }
+            // Handle kirikala section
+            else if (!document.getElementById('kirikala-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleKirikalaPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        kirikalaSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        kirikalaSkipForward();
+                        break;
+                }
+            }
+            // Handle vocal section
+            else if (!document.getElementById('vocal-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleVocalPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        vocalSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        vocalSkipForward();
+                        break;
+                }
+            }
+            // Handle dancing section
+            else if (!document.getElementById('dancing-section').classList.contains('hidden')) {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        toggleDancingPlayPause();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        dancingSkipBackward();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        dancingSkipForward();
+                        break;
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+    let currentCalculation = null;
+
+// Wedding services with bites and extra dishes included
+const weddingServices = [
+    { id: 'decorations', name: 'Decorations', price: 35000, checked: true, category: 'services' },
+    { id: 'cake', name: 'Structured Cake', price: 8000, checked: false, category: 'services' },
+    { id: 'kirikala', name: 'Kirikala', price: 7000, checked: false, category: 'services' },
+    { id: 'champagne', name: 'Champagne', price: 8000, checked: false, category: 'services' },
+    { id: 'music-band', name: 'Music Band', price: 17000, checked: false, category: 'services' },
+    { id: 'dj', name: 'DJ', price: 15000, checked: false, category: 'services' },
+    { id: 'wes-dancers', name: 'Wes dancers', price: 17000, checked: false, category: 'services' },
+    { id: 'item-dancers-3', name: 'Item dancers (3 girls)', price: 17000, checked: false, category: 'services' },
+    { id: 'item-dancers-4', name: 'Item dancers (4 girls)', price: 20000, checked: false, category: 'services' },
+    { id: 'jayamangala', name: 'Jayamangala (Per girl)', price: 1750, checked: false, hasQuantity: true, category: 'services' },
+    { id: 'outdoor-lighting', name: 'Outdoor lightening', price: 25000, checked: false, category: 'services' },
+    // Bites
+    { id: 'bites', name: 'Chicken (1kg)', price: 3200, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Pork (1kg)', price: 3500, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Lake Fish (1kg)', price: 2800, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Thalapath Fish (1kg)', price: 4000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Prawns (1kg)', price: 4000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'French Fries (1kg)', price: 3800, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Sausages (1kg)', price: 3000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Boiled Grams (1kg)', price: 2000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Boiled Vegetable (1kg)', price: 2000, checked: false, hasQuantity: true, category: 'bites' },
+    // Extra Dishes
+    { id: 'Cream of Vegetable Soup', name: 'Cream of Vegetable Soup', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Rice (Basmathi)', name: 'Rice (Basmathi)', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Prawns', name: 'Prawns', price: 350, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Seafood Mix Deviled', name: 'Seafood Mix Deviled', price: 400, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Pork', name: 'Pork', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Cuttle Fish', name: 'Cuttle Fish', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Jelly', name: 'Jelly', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Caramel', name: 'Caramel', price: 250, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Chocolate Mouse', name: 'Chocolate Mouse', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Mashroom', name: 'Mashroom', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Malay Pickle', name: 'Malay Pickle', price: 100, checked: false, hasQuantity: true, category: 'dishes' },
+];
+
+// Party services with bites and extra dishes included
+const partyServices = [
+    // Bites
+    { id: 'bites', name: 'Chicken (1kg)', price: 3200, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Pork (1kg)', price: 3500, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Lake Fish (1kg)', price: 2800, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Thalapath Fish (1kg)', price: 4000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Prawns (1kg)', price: 4000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'French Fries (1kg)', price: 3800, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Sausages (1kg)', price: 3000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Boiled Grams (1kg)', price: 2000, checked: false, hasQuantity: true, category: 'bites' },
+    { id: 'bites', name: 'Boiled Vegetable (1kg)', price: 2000, checked: false, hasQuantity: true, category: 'bites' },
+    // Extra Dishes
+    { id: 'Cream of Vegetable Soup', name: 'Cream of Vegetable Soup', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Rice (Basmathi)', name: 'Rice (Basmathi)', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Prawns', name: 'Prawns', price: 350, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Seafood Mix Deviled', name: 'Seafood Mix Deviled', price: 400, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Pork', name: 'Pork', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Cuttle Fish', name: 'Cuttle Fish', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Jelly', name: 'Jelly', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Caramel', name: 'Caramel', price: 250, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Chocolate Mouse', name: 'Chocolate Mouse', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Mashroom', name: 'Mashroom', price: 150, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'Malay Pickle', name: 'Malay Pickle', price: 100, checked: false, hasQuantity: true, category: 'dishes' },
+    { id: 'CASHEW', name: 'CASHEW', price: 300, checked: false, hasQuantity: true, category: 'dishes' },
+    // BBQ
+    { id: 'BBQ', name: 'EGG HOPPERS', price: 150, checked: true, category: 'services' },
+    { id: 'BBQ', name: 'PLAIN HOPPERS', price: 70, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'VEG/ KOTHTHU', price: 1200, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'CHICKEN KOTHTHU', price: 1500, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'MARINATED GRILLED CHICKEN (1Kg)', price: 3500, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'MARINATED GRILLED FISH (1Kg)', price: 4000, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'SEASONED GRILLED PORK (1Kg)', price: 3800, checked: false, category: 'services' },
+    { id: 'BBQ', name: 'SEASONED GRILLED SAUSAGES (1Kg)', price: 3200, checked: false, category: 'services' },
+];
+
+// Hall configuration with minimum guest limits and surcharge amounts
+const hallConfig = {
+    prince: { name: 'Prince Banquet Hall', minGuests: 200, surcharge: 40000 },
+    angelo: { name: 'Angelo Banquet Hall', minGuests: 150, surcharge: 30000 },
+    ru: { name: 'Ru Banquet Hall', minGuests: 75, surcharge: 25000 }
+};
+
+function handleEventTypeChange() {
+    const eventType = document.getElementById('event-type').value;
+    const packageContainer = document.getElementById('package-type-container');
+    const packageSelect = document.getElementById('package-type');
+    const hallContainer = document.getElementById('hall-selection-container');
+    
+    if (eventType === 'party') {
+        // Change package options for party
+        packageSelect.innerHTML = `
+            <option value="">Select Menu</option>
+            <option value="1850">Menu 01 - Rs. 1,850</option>
+            <option value="1950">Menu 02 - Rs. 1,950</option>
+            <option value="1950">Menu 03 - Rs. 1,950</option>
+            <option value="2150">Menu 04 - Rs. 2,150</option>
+            <option value="1750">Menu 05 Party - Rs. 1,750</option>
+        `;
+        // Hide hall selection for party
+        hallContainer.style.display = 'none';
+        populateServices(partyServices);
+    } else {
+        // Regular wedding packages
+        packageSelect.innerHTML = `
+            <option value="3250">Banquet Hall Menu 01 - Rs. 3,250</option>
+            <option value="3750">Banquet Hall Menu 02 - Rs. 3,750</option>
+            <option value="4250">Banquet Hall Menu 03 - Rs. 4,250</option>
+            <option value="4850">Banquet Hall Menu 04 - Rs. 4,850</option>
+            <option value="5800">All-Inclusive Package - Rs. 5,800</option>
+        `;
+        // Show hall selection for other events
+        hallContainer.style.display = 'block';
+        populateServices(weddingServices);
+    }
+    
+    // Hide extra dishes and bites sections since they're now in services
+    document.getElementById('bites-qty').style.display = 'none';
+    document.getElementById('bites-qty').previousElementSibling.style.display = 'none';
+    document.getElementById('bites-qty').nextElementSibling.style.display = 'none';
+    
+    calculatePrice();
+}
+
+function populateServices(services) {
+    const container = document.getElementById('additional-services-container');
+    container.innerHTML = '';
+    
+    // Group services by category
+    const serviceGroups = services.reduce((groups, service) => {
+        if (!groups[service.category]) groups[service.category] = [];
+        groups[service.category].push(service);
+        return groups;
+    }, {});
+
+    // Create sections for each category
+    Object.keys(serviceGroups).forEach(category => {
+        if (category === 'services') {
+            const categoryTitle = document.createElement('h4');
+            categoryTitle.className = 'text-md font-medium text-hotel-green mb-3 mt-4';
+            categoryTitle.textContent = 'Additional Services';
+            container.appendChild(categoryTitle);
+        } else if (category === 'bites') {
+            const categoryTitle = document.createElement('h4');
+            categoryTitle.className = 'text-md font-medium text-hotel-green mb-3 mt-4';
+            categoryTitle.textContent = 'Bites Selection';
+            container.appendChild(categoryTitle);
+        } else if (category === 'dishes') {
+            const categoryTitle = document.createElement('h4');
+            categoryTitle.className = 'text-md font-medium text-hotel-green mb-3 mt-4';
+            categoryTitle.textContent = 'Extra Dishes';
+            container.appendChild(categoryTitle);
+        }
+
+        serviceGroups[category].forEach(service => {
+            const serviceDiv = document.createElement('div');
+            serviceDiv.innerHTML = `
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" id="${service.id}" data-price="${service.price}" class="rounded border-gray-300 text-hotel-lime focus:ring-hotel-lime additional-service" ${service.checked ? 'checked' : ''} onchange="calculatePrice()">
+                    <span class="text-sm font-medium text-gray-700">${service.name} (Rs. ${service.price.toLocaleString()})</span>
+                    ${service.hasQuantity ? `<input type="number" id="${service.id}-qty" class="w-16 border border-gray-300 rounded px-2 py-1 text-sm ml-2" min="1" value="1" onchange="calculatePrice()" placeholder="1">` : ''}
+                </label>
+            `;
+            container.appendChild(serviceDiv);
+        });
+    });
+}
+
+function handleGuestChange() {
+    calculatePrice();
+}
+
+function handlePackageChange() {
+    const packageType = document.getElementById('package-type').value;
+    const additionalServicesSection = document.getElementById('additional-services-section');
+    
+    if (packageType === '5800') {
+        // Hide additional services for All-Inclusive package
+        additionalServicesSection.style.display = 'none';
+        // Uncheck all additional services
+        document.querySelectorAll('.additional-service').forEach(service => {
+            service.checked = false;
+        });
+    } else {
+        // Show additional services for other packages
+        additionalServicesSection.style.display = 'block';
+        // Re-populate services based on event type
+        const eventType = document.getElementById('event-type').value;
+        if (eventType === 'party') {
+            populateServices(partyServices);
+        } else {
+            populateServices(weddingServices);
+        }
+    }
+    
+    calculatePrice();
+}
+
+function calculateHallSurcharge(guests, hallSelection) {
+    if (!hallSelection || !guests) return 0;
+    
+    const hall = hallConfig[hallSelection];
+    if (!hall) return 0;
+    
+    // Apply surcharge only if guests are below the minimum limit
+    if (guests < hall.minGuests) {
+        return hall.surcharge;
+    }
+    
+    return 0;
+}
+
+function calculatePrice() {
+    const guests = parseInt(document.getElementById('guests').value) || 0;
+    const packageType = document.getElementById('package-type').value;
+    const eventType = document.getElementById('event-type').value;
+    const eventDate = document.getElementById('event-date').value;
+    const hallSelection = document.getElementById('hall-selection').value;
+    
+    if (!guests || !packageType) {
+        document.getElementById('price-breakdown').innerHTML = `
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <p class="text-gray-500 text-center">Please enter number of guests and select a package</p>
+            </div>
+        `;
+        document.getElementById('quote-actions').classList.add('hidden');
+        return;
+    }
+    
+    let breakdown = [];
+    let total = 0;
+    
+    // Small crowd surcharge (only for non-party events when guests are below hall minimum)
+    if (eventType !== 'party' && hallSelection) {
+        const surcharge = calculateHallSurcharge(guests, hallSelection);
+        if (surcharge > 0) {
+            const hall = hallConfig[hallSelection];
+            breakdown.push({
+                item: `Small Crowd Surcharge (${hall.name} - Below ${hall.minGuests} guests)`,
+                quantity: 1,
+                unitPrice: surcharge,
+                total: surcharge
+            });
+            total += surcharge;
+        }
+    }
+    
+    // Base package cost
+    const packagePrice = parseInt(packageType);
+    const baseTotal = packagePrice * guests;
+    breakdown.push({
+        item: getPackageName(packageType, eventType),
+        quantity: guests,
+        unitPrice: packagePrice,
+        total: baseTotal
+    });
+    total += baseTotal;
+    
+    // Additional services (only if not All-Inclusive)
+    if (packageType !== '5800') {
+        const additionalServices = document.querySelectorAll('.additional-service:checked');
+        additionalServices.forEach(service => {
+            const price = parseInt(service.getAttribute('data-price'));
+            const serviceName = service.parentElement.querySelector('span').textContent.split(' (Rs.')[0];
+            
+            let quantity = 1;
+            let serviceTotal = price;
+            
+            // Special handling for services with quantity
+            const qtyInput = document.getElementById(service.id + '-qty');
+            if (qtyInput) {
+                quantity = parseInt(qtyInput.value) || 1;
+                serviceTotal = price * quantity;
+            }
+            
+            breakdown.push({
+                item: serviceName,
+                quantity: quantity,
+                unitPrice: price,
+                total: serviceTotal
+            });
+            total += serviceTotal;
+        });
+    }
+    
+    // Store current calculation
+    currentCalculation = {
+        eventType,
+        eventDate,
+        guests,
+        hallSelection,
+        breakdown,
+        total,
+        isAllInclusive: packageType === '5800'
+    };
+    
+    // Display breakdown
+    displayBreakdown(breakdown, total);
+    document.getElementById('quote-actions').classList.remove('hidden');
+}
+
+function getPackageName(value, eventType) {
+    if (eventType === 'party') {
+        const partyPackages = {
+            '1850': 'Menu 01',
+            '1950': 'Menu 02',
+            '1950': 'Menu 03',
+            '2150': 'Menu 04',
+            '1750': 'Menu 05 Party'
+        };
+        return partyPackages[value] || 'Unknown Menu';
+    } else {
+        const packages = {
+            '3250': 'Banquet Hall Menu 01',
+            '3750': 'Banquet Hall Menu 02',
+            '4250': 'Banquet Hall Menu 03',
+            '4850': 'Banquet Hall Menu 04',
+            '5800': 'All-Inclusive Package'
+        };
+        return packages[value] || 'Unknown Package';
+    }
+}
+
+function displayBreakdown(breakdown, total) {
+    let html = '';
+    
+    breakdown.forEach(item => {
+        html += `
+            <div class="price-item">
+                <div class="flex-1">
+                    <div class="font-medium text-gray-900">${item.item}</div>
+                    <div class="text-sm text-gray-500">${item.quantity} × Rs. ${item.unitPrice.toLocaleString()}</div>
+                </div>
+                <div class="font-semibold text-hotel-green">Rs. ${item.total.toLocaleString()}</div>
+            </div>
+        `;
+    });
+    
+    if (currentCalculation && currentCalculation.isAllInclusive) {
+        html += `
+            <div class="bg-blue-50 p-3 rounded-lg mt-4 mb-4">
+                <p class="text-sm text-blue-700 font-medium">✨ All-Inclusive Package includes:</p>
+                <p class="text-xs text-blue-600">Decorations, Entertainment, Catering, and all standard wedding services</p>
+            </div>
+        `;
+    }
+    
+    // Show small crowd surcharge warning if applicable
+    const guests = parseInt(document.getElementById('guests').value) || 0;
+    const hallSelection = document.getElementById('hall-selection').value;
+    if (currentCalculation.eventType !== 'party' && hallSelection && guests > 0) {
+        const hall = hallConfig[hallSelection];
+        if (hall && guests < hall.minGuests) {
+            html += `
+                <div class="bg-orange-50 p-3 rounded-lg mt-4 mb-4">
+                    <p class="text-sm text-orange-700 font-medium">⚠️ Small Crowd Surcharge Applied:</p>
+                    <p class="text-xs text-orange-600">For crowds below ${hall.minGuests} guests in ${hall.name}, an additional Rs. ${hall.surcharge.toLocaleString()} is charged</p>
+                </div>
+            `;
+        } 
+    }
+    
+    html += `
+        <div class="total-price">
+            <div class="flex justify-between items-center">
+                <span class="text-lg font-bold">Total Amount</span>
+                <span class="text-2xl font-bold">Rs. ${total.toLocaleString()}</span>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('price-breakdown').innerHTML = html;
+}
+
+function generateQuote() {
+    if (!currentCalculation) {
+        alert('Please calculate the price first');
+        return;
+    }
+    
+    const date = new Date();
+    const quoteNumber = 'GV' + date.getFullYear() + (date.getMonth() + 1).toString().padStart(2, '0') + date.getDate().toString().padStart(2, '0') + Math.floor(Math.random() * 1000);
+    
+    const selectedHallName = currentCalculation.hallSelection ? hallConfig[currentCalculation.hallSelection].name : 'Not Selected';
+    
+    let quoteHtml = `
+        <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div>
+                <strong>Event Type:</strong> ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)}
+            </div>
+            <div>
+                <strong>Event Date:</strong> ${currentCalculation.eventDate || 'To be confirmed'}
+            </div>
+            <div>
+                <strong>Number of Guests:</strong> ${currentCalculation.guests}
+            </div>
+    `;
+    
+    if (currentCalculation.eventType !== 'party') {
+        const hall = hallConfig[currentCalculation.hallSelection];
+        quoteHtml += `
+            <div>
+                <strong>Hall:</strong> ${selectedHallName} (Capacity: ${hall.maxGuests})
+            </div>
+        `;
+    }
+    
+    quoteHtml += `
+            
+        </div>
+        
+        <div class="border border-gray-300 rounded-lg overflow-hidden mb-6">
+            <table class="w-full">
+                <thead class="bg-hotel-green text-white">
+                    <tr>
+                        <th class="text-left p-3">Service</th>
+                        <th class="text-center p-3">Qty</th>
+                        <th class="text-right p-3">Unit Price</th>
+                        <th class="text-right p-3">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+    
+    currentCalculation.breakdown.forEach(item => {
+        quoteHtml += `
+            <tr class="border-b border-gray-200">
+                <td class="p-3">${item.item}</td>
+                <td class="p-3 text-center">${item.quantity}</td>
+                <td class="p-3 text-right">Rs. ${item.unitPrice.toLocaleString()}</td>
+                <td class="p-3 text-right font-semibold">Rs. ${item.total.toLocaleString()}</td>
+            </tr>
+        `;
+    });
+    
+    quoteHtml += `
+                </tbody>
+                <tfoot class="bg-hotel-lime">
+                    <tr>
+                        <td colspan="3" class="p-3 text-right font-bold text-hotel-green">Grand Total:</td>
+                        <td class="p-3 text-right font-bold text-hotel-green text-xl">Rs. ${currentCalculation.total.toLocaleString()}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    `;
+
+    if (currentCalculation.isAllInclusive) {
+        quoteHtml += `
+            <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                <h4 class="font-bold text-blue-800 mb-2">All-Inclusive Package Features:</h4>
+                <ul class="text-sm text-blue-700 list-disc ml-5 space-y-1">
+                    <li>Premium decorations and venue setup</li>
+                    <li>Professional entertainment (DJ/Music Band)</li>
+                    <li>Complete catering service</li>
+                    <li>Wedding cake and champagne service</li>
+                    <li>Photography and videography coordination</li>
+                    <li>Event planning and coordination</li>
+                </ul>
+            </div>
+        `;
+    } else if (currentCalculation.eventType === 'party') {
+        quoteHtml += `
+            
+        `;
+    }
+    
+    // Add small crowd surcharge notice if applicable
+    if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection && currentCalculation.guests > 0) {
+        const hall = hallConfig[currentCalculation.hallSelection];
+        if (hall && currentCalculation.guests < hall.minGuests) {
+            quoteHtml += `
+                <div class="bg-orange-50 p-4 rounded-lg mb-6">
+                    <h4 class="font-bold text-orange-800 mb-2">⚠️ Important Notice:</h4>
+                    <p class="text-sm text-orange-700">For events with fewer than ${hall.minGuests} guests in the ${hall.name}, an additional Rs. ${hall.surcharge.toLocaleString()} small crowd surcharge applies.</p>
+                </div>
+            `;
+        } 
+    }
+    
+    quoteHtml += `
+        <div class="text-sm text-gray-600 space-y-2">
+            <p><strong>Terms & Conditions:</strong></p>
+            <ul class="list-disc ml-5 space-y-1">
+                <li>This quotation is valid for 30 days from the date of issue</li>
+                <li>50% advance payment required to confirm booking</li>
+                <li>Final payment due 7 days before the event</li>
+                <li>Prices are subject to change based on final requirements</li>
+                <li>Cancellation charges apply as per our policy</li>
+            </ul>
+        </div>
+    `;
+    
+    document.getElementById('quote-content').innerHTML = quoteHtml;
+    document.getElementById('quote-modal').classList.remove('hidden');
+}
+
+function closeQuoteModal() {
+    document.getElementById('quote-modal').classList.add('hidden');
+}
+
+function downloadCompletePDF() {
+    if (!currentCalculation) {
+        alert('Please calculate the price first');
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    
+    // PDF styling constants
+    const pageWidth = 190; // A4 width minus margins (210 - 20)
+    const pageHeight = 277; // A4 height minus margins (297 - 20)
+    const margin = 10;
+    const lineHeight = 7;
+    let currentY = margin;
+    
+    // Colors
+    const primaryColor = [4, 52, 24]; // Hotel green
+    const accentColor = [182, 214, 69]; // Hotel lime
+    const grayColor = [107, 114, 128];
+    
+    // Helper function to check if we need a new page
+    function checkPageBreak(requiredHeight) {
+        if (currentY + requiredHeight > pageHeight) {
+            pdf.addPage();
+            currentY = margin;
+            return true;
+        }
+        return false;
+    }
+    
+    // Helper function to add text with word wrapping
+    function addWrappedText(text, x, y, maxWidth, fontSize = 10) {
+        pdf.setFontSize(fontSize);
+        const lines = pdf.splitTextToSize(text, maxWidth);
+        lines.forEach((line, index) => {
+            checkPageBreak(lineHeight);
+            pdf.text(line, x, y + (index * lineHeight));
+        });
+        return y + (lines.length * lineHeight);
+    }
+    
+    // Header
+    pdf.setFillColor(...primaryColor);
+    pdf.rect(margin, currentY, pageWidth, 25, 'F');
+    
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(20);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Green Valley Resort', margin + 5, currentY + 8);
+    
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text(`${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)} Package Quotation`, margin + 5, currentY + 16);
+    
+    // Quote details in header
+    const date = new Date();
+    const quoteNumber = 'GV' + date.getFullYear() + (date.getMonth() + 1).toString().padStart(2, '0') + date.getDate().toString().padStart(2, '0') + Math.floor(Math.random() * 1000);
+    
+    pdf.setFontSize(8);
+    pdf.text(`Quote #: ${quoteNumber}`, pageWidth - 40, currentY + 8);
+    pdf.text(`Date: ${new Date().toLocaleDateString()}`, pageWidth - 40, currentY + 14);
+    pdf.text(`Valid Until: ${new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString()}`, pageWidth - 40, currentY + 20);
+    
+    currentY += 35;
+    
+    // Event Details Section
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Event Details', margin, currentY);
+    currentY += 10;
+    
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    
+    const eventDetails = [
+        `Event Type: ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)}`,
+        `Event Date: ${currentCalculation.eventDate || 'To be confirmed'}`,
+        `Number of Guests: ${currentCalculation.guests}`
+    ];
+    
+    if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection) {
+        const hall = hallConfig[currentCalculation.hallSelection];
+        eventDetails.push(`Hall: ${hall.name}`);
+    }
+    
+    eventDetails.forEach(detail => {
+        checkPageBreak(lineHeight);
+        pdf.text(detail, margin, currentY);
+        currentY += lineHeight;
+    });
+    
+    currentY += 10;
+    
+    // Service Breakdown Table
+    checkPageBreak(20);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Service Breakdown', margin, currentY);
+    currentY += 10;
+    
+    // Table header
+    checkPageBreak(15);
+    pdf.setFillColor(...accentColor);
+    pdf.rect(margin, currentY, pageWidth, 10, 'F');
+    
+    pdf.setTextColor(...primaryColor);
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'bold');
+    
+    pdf.text('Service', margin + 2, currentY + 7);
+    pdf.text('Qty', margin + 100, currentY + 7);
+    pdf.text('Unit Price', margin + 125, currentY + 7);
+    pdf.text('Total', margin + 160, currentY + 7);
+    
+    currentY += 12;
+    
+    // Table rows
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFont('helvetica', 'normal');
+    
+    currentCalculation.breakdown.forEach((item, index) => {
+        checkPageBreak(lineHeight + 2);
+        
+        // Alternate row background
+        if (index % 2 === 0) {
+            pdf.setFillColor(248, 250, 252);
+            pdf.rect(margin, currentY - 2, pageWidth, lineHeight + 2, 'F');
+        }
+        
+        // Service name (with word wrapping if needed)
+        const serviceLines = pdf.splitTextToSize(item.item, 95);
+        pdf.text(serviceLines[0], margin + 2, currentY + 4);
+        
+        // If service name is too long, show truncated version
+        if (serviceLines.length > 1) {
+            pdf.text(serviceLines[0].substring(0, serviceLines[0].length - 3) + '...', margin + 2, currentY + 4);
+        }
+        
+        pdf.text(item.quantity.toString(), margin + 100, currentY + 4);
+        pdf.text(`Rs. ${item.unitPrice.toLocaleString()}`, margin + 125, currentY + 4);
+        pdf.text(`Rs. ${item.total.toLocaleString()}`, margin + 160, currentY + 4);
+        
+        currentY += lineHeight + 2;
+    });
+    
+    // Total
+    checkPageBreak(15);
+    pdf.setFillColor(...primaryColor);
+    pdf.rect(margin, currentY, pageWidth, 12, 'F');
+    
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('GRAND TOTAL:', margin + 2, currentY + 8);
+    pdf.text(`Rs. ${currentCalculation.total.toLocaleString()}`, margin + 160, currentY + 8);
+    
+    currentY += 20;
+    
+    // Package Features
+    if (currentCalculation.isAllInclusive) {
+        checkPageBreak(50);
+        pdf.setTextColor(...primaryColor);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('All-Inclusive Package Features:', margin, currentY);
+        currentY += 8;
+        
+        pdf.setTextColor(0, 0, 0);
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        
+        const features = [
+            '• Premium decorations and venue setup',
+            '• Professional entertainment (DJ/Music Band)',
+            '• Complete catering service',
+            '• Wedding cake and champagne service',
+            '• Photography and videography coordination',
+            '• Event planning and coordination'
+        ];
+        
+        features.forEach(feature => {
+            checkPageBreak(lineHeight);
+            pdf.text(feature, margin + 5, currentY);
+            currentY += lineHeight;
+        });
+        
+        currentY += 5;
+    } else if (currentCalculation.eventType === 'party') {
+        checkPageBreak(40);
+        pdf.setTextColor(...primaryColor);
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Party Package Features:', margin, currentY);
+        currentY += 8;
+        
+        pdf.setTextColor(0, 0, 0);
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        
+        const features = [
+            '• Professional catering service',
+            '• Venue setup and basic decorations',
+            '• Sound system and basic lighting',
+            '• Event coordination and support staff',
+            '• Complimentary parking for guests'
+        ];
+        
+        features.forEach(feature => {
+            checkPageBreak(lineHeight);
+            pdf.text(feature, margin + 5, currentY);
+            currentY += lineHeight;
+        });
+        
+        currentY += 5;
+    }
+    
+    // Small crowd surcharge notice
+    if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection && currentCalculation.guests > 0) {
+        const hall = hallConfig[currentCalculation.hallSelection];
+        if (hall && currentCalculation.guests < hall.minGuests) {
+            checkPageBreak(25);
+            
+            // Warning box background
+            pdf.setFillColor(255, 237, 213); // Orange background
+            pdf.rect(margin, currentY - 2, pageWidth, 20, 'F');
+            
+            pdf.setTextColor(154, 52, 18); // Orange text
+            pdf.setFontSize(11);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('⚠ Important Notice:', margin + 5, currentY + 5);
+            
+            pdf.setFontSize(9);
+            pdf.setFont('helvetica', 'normal');
+            const noticeText = `Small crowd surcharge (Rs. ${hall.surcharge.toLocaleString()}) applied for fewer than ${hall.minGuests} guests in ${hall.name}.`;
+            currentY = addWrappedText(noticeText, margin + 5, currentY + 12, pageWidth - 10, 9);
+            currentY += 10;
+        }
+    }
+    
+    // Terms & Conditions
+    checkPageBreak(80);
+    pdf.setTextColor(...primaryColor);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Terms & Conditions', margin, currentY);
+    currentY += 10;
+    
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(9);
+    pdf.setFont('helvetica', 'normal');
+    
+    const terms = [
+        
+    ];
+    
+    terms.forEach(term => {
+        if (term === '') {
+            currentY += 3;
+            return;
+        }
+        
+        checkPageBreak(lineHeight);
+        
+        if (term.includes(':') && !term.startsWith('   •')) {
+            pdf.setFont('helvetica', 'bold');
+        } else {
+            pdf.setFont('helvetica', 'normal');
+        }
+        
+        const lines = pdf.splitTextToSize(term, pageWidth - 10);
+        lines.forEach(line => {
+            checkPageBreak(lineHeight);
+            pdf.text(line, margin + 5, currentY);
+            currentY += lineHeight;
+        });
+    });
+    
+    currentY += 10;
+    
+    // Contact Information
+    checkPageBreak(30);
+    pdf.setFillColor(248, 250, 252);
+    pdf.rect(margin, currentY - 5, pageWidth, 25, 'F');
+    
+    pdf.setTextColor(...primaryColor);
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Contact Information', margin + 5, currentY + 3);
+    
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(9);
+    pdf.setFont('helvetica', 'normal');
+    
+    const contactInfo = [
+        'Green Valley Resort',
+        'Address: [Your Resort Address]',
+        'Phone: 037 222 19 96',
+        'Email: info@greenvalleyresort.lk',
+        'Website: www.greenvalleyresort.lk'
+    ];
+    
+    contactInfo.forEach((info, index) => {
+        pdf.text(info, margin + 5, currentY + 10 + (index * 4));
+    });
+    
+    currentY += 35;
+    
+    // Footer on every page
+    const totalPages = pdf.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        pdf.setPage(i);
+        
+        // Footer line
+        pdf.setDrawColor(...grayColor);
+        pdf.line(margin, 287, pageWidth + margin, 287);
+        
+        // Footer text
+        pdf.setTextColor(...grayColor);
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Green Valley Resort - Your Dream Event Destination', margin, 292);
+        pdf.text(`Page ${i} of ${totalPages}`, pageWidth - 20, 292);
+        
+        // Add timestamp
+        pdf.text(`Generated on: ${new Date().toLocaleString()}`, margin, 297);
+    }
+    
+    // Generate filename
+    const eventType = currentCalculation.eventType.charAt(0).toUpperCase() + 
+                     currentCalculation.eventType.slice(1);
+    const dateStr = new Date().toISOString().split('T')[0];
+    const filename = `GreenValley_${eventType}_Quote_${quoteNumber}_${dateStr}.pdf`;
+    
+    // Save the PDF
+    pdf.save(filename);
+}
+
+// Alternative function using html2canvas for exact visual representation
+function downloadVisualPDF() {
+    if (!currentCalculation) {
+        alert('Please calculate the price first');
+        return;
+    }
+
+    // Create a temporary container with the complete quotation
+    const tempContainer = document.createElement('div');
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.left = '-9999px';
+    tempContainer.style.top = '0';
+    tempContainer.style.width = '800px';
+    tempContainer.style.backgroundColor = 'white';
+    tempContainer.style.padding = '40px';
+    tempContainer.style.fontFamily = 'Arial, sans-serif';
+    
+    // Get the current quote content
+    const quoteContent = document.getElementById('quote-content').innerHTML;
+    
+    // Create complete quotation content
+    const date = new Date();
+    const quoteNumber = 'GV' + date.getFullYear() + (date.getMonth() + 1).toString().padStart(2, '0') + date.getDate().toString().padStart(2, '0') + Math.floor(Math.random() * 1000);
+    
+    tempContainer.innerHTML = `
+        <div style="text-align: center; margin-bottom: 30px; border-bottom: 3px solid #043418; padding-bottom: 20px;">
+            <h1 style="color: #043418; font-size: 28px; margin: 0; font-weight: bold;">Green Valley Resort</h1>
+            <p style="color: #666; font-size: 16px; margin: 5px 0;">${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)} Package Quotation</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 12px; color: #666;">
+                <span>Quote #: ${quoteNumber}</span>
+                <span>Date: ${new Date().toLocaleDateString()}</span>
+                <span>Valid Until: ${new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString()}</span>
+            </div>
+        </div>
+        
+        ${quoteContent}
+        
+        <div style="margin-top: 30px; text-align: center; border-top: 2px solid #043418; padding-top: 20px;">
+            <h3 style="color: #043418; margin-bottom: 10px;">Thank you for choosing Green Valley Resort</h3>
+            <div style="font-size: 12px; color: #666; line-height: 1.5;">
+                <p><strong>For inquiries and bookings:</strong></p>
+                <p>📞 Phone: 037 222 19 96 | 📧 Email: info@greenvalleyresort.lk</p>
+                <p>🌐 Website: www.greenvalleyresort.lk</p>
+                <p style="margin-top: 15px; font-style: italic;">Your Dream Event Destination</p>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(tempContainer);
+    
+    // Generate PDF using html2canvas
+    html2canvas(tempContainer, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 800,
+        height: tempContainer.scrollHeight
+    }).then(canvas => {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        const imgData = canvas.toDataURL('image/png');
+        const pageWidth = 210;
+        const pageHeight = 297;
+        const margin = 10;
+        const contentWidth = pageWidth - (margin * 2);
+        const contentHeight = pageHeight - (margin * 2);
+        
+        // Calculate image dimensions to fit page width
+        const imgWidth = contentWidth;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        // Calculate number of pages needed
+        const totalPages = Math.ceil(imgHeight / contentHeight);
+        
+        for (let page = 0; page < totalPages; page++) {
+            if (page > 0) {
+                pdf.addPage();
+            }
+            
+            const yOffset = -(page * contentHeight);
+            
+            pdf.addImage(
+                imgData,
+                'PNG',
+                margin,
+                margin + yOffset,
+                imgWidth,
+                imgHeight
+            );
+        }
+        
+        // Generate filename
+        const eventType = currentCalculation.eventType.charAt(0).toUpperCase() + 
+                         currentCalculation.eventType.slice(1);
+        const dateStr = new Date().toISOString().split('T')[0];
+        const filename = `GreenValley_${eventType}_Complete_Quote_${quoteNumber}_${dateStr}.pdf`;
+        
+        pdf.save(filename);
+        
+        // Clean up
+        document.body.removeChild(tempContainer);
+    }).catch(error => {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+        document.body.removeChild(tempContainer);
+    });
+}
+
+// Enhanced download function that combines both approaches
+function downloadEnhancedPDF() {
+    if (!currentCalculation) {
+        alert('Please calculate the price first');
+        return;
+    }
+
+    // Show loading indicator
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = 'pdf-loading';
+    loadingDiv.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+            <div style="background: white; padding: 30px; border-radius: 10px; text-align: center;">
+                <div style="font-size: 18px; color: #043418; margin-bottom: 10px;">Generating PDF...</div>
+                <div style="font-size: 14px; color: #666;">Please wait while we prepare your complete quotation</div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(loadingDiv);
+    
+    // Use the visual PDF generation
+    setTimeout(() => {
+        downloadVisualPDF();
+        document.body.removeChild(loadingDiv);
+    }, 500);
+}
+
+function shareViaWhatsApp() {
+    if (!currentCalculation) {
+        alert('Please calculate the price first');
+        return;
+    }
+    
+    const selectedHallName = currentCalculation.hallSelection ? hallConfig[currentCalculation.hallSelection].name : 'Not Selected';
+    
+    let message = `🏨 *Green Valley Resort - ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)} Package Quote*\n\n`;
+    message += `📅 *Event:* ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)}\n`;
+    message += `👥 *Guests:* ${currentCalculation.guests}\n`;
+    
+    if (currentCalculation.eventType !== 'party') {
+        message += `🏛️ *Hall:* ${selectedHallName}\n`;
+    }
+    
+    if (currentCalculation.eventDate) {
+        message += `📆 *Date:* ${currentCalculation.eventDate}\n`;
+    }
+    message += `\n✨ *Services Included:*\n`;
+    
+    currentCalculation.breakdown.forEach(item => {
+        message += `• ${item.item} (${item.quantity}x) - Rs. ${item.total.toLocaleString()}\n`;
+    });
+    
+    if (currentCalculation.isAllInclusive) {
+        message += `\n🎉 *All-Inclusive Package Benefits:*\n`;
+        message += `• Premium decorations & venue setup\n`;
+        message += `• Professional entertainment\n`;
+        message += `• Complete catering service\n`;
+        message += `• Wedding cake & champagne\n`;
+        message += `• Event planning & coordination\n`;
+    } else if (currentCalculation.eventType === 'party') {
+        message += `\n🎉 *Party Package Benefits:*\n`;
+        message += `• Professional catering service\n`;
+        message += `• Venue setup & basic decorations\n`;
+        message += `• Sound system & basic lighting\n`;
+        message += `• Event coordination & support staff\n`;
+    }
+    
+    // Add small crowd surcharge notice if applicable
+    if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection && currentCalculation.guests > 0) {
+        const hall = hallConfig[currentCalculation.hallSelection];
+        if (hall && currentCalculation.guests < hall.minGuests) {
+            message += `\n⚠️ *Important Notice:*\n`;
+            message += `Small crowd surcharge (Rs. ${hall.surcharge.toLocaleString()}) applied for fewer than ${hall.minGuests} guests in ${hall.name}.\n`;
+        }
+    }
+    
+    message += `\n💰 *Total Amount: Rs. ${currentCalculation.total.toLocaleString()}*\n\n`;
+    message += `📝 This quote is valid for 30 days\n`;
+    message += `💳 50% advance payment required for booking\n\n`;
+    message += `📞 Contact us for booking: +94 123 456 789\n`;
+    message += `🌐 Green Valley Resort - Your Dream Event Destination`;
+    
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'quote-modal') {
+        closeQuoteModal();
+    }
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default event date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('event-date').value = today;
+    
+    // Initialize with wedding services
+    populateServices(weddingServices);
+    
+    // Hide the original bites and extra dishes inputs since they're now in services
+    const bitesContainer = document.getElementById('bites-qty').parentElement;
+    bitesContainer.style.display = 'none';
+    
+    const extraDishesSection = document.querySelector('.mt-6');
+    if (extraDishesSection && extraDishesSection.querySelector('h3').textContent.includes('Extra Dishes')) {
+        extraDishesSection.style.display = 'none';
+    }
+});
+    </script>
+</body>
+</html>

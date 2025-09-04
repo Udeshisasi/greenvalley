@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platinum Wedding Package I Video</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-green': '#043418',
+                        'hotel-lime': '#b6d645'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            z-index: 10;
+        }
+        
+        .background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* Reduced opacity */
+            transition: opacity 0.3s ease;
+        }
+        
+        .content-wrapper {
+            margin-top: 60vh;
+            position: relative;
+            z-index: 20;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .video-container {
+                height: 50vh;
+            }
+            .content-wrapper {
+                margin-top: 50vh;
+            }
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            padding: 2rem;
+            color: white;
+            pointer-events: none;
+        }
+        
+        .video-overlay * {
+            pointer-events: auto;
+        }
+        
+        .package-details {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-radius: 0.5rem;
+        }
+        
+        .sticky-cta {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(4, 52, 24, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Optional hover effect */
+        .video-container:hover .background-video {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Fixed Video Section -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="../images/Video/s 01.mp4" type="video/mp4">
+            <!-- Fallback image if video doesn't load -->
+            <img src="../images/Pkg/pkg 05.png" alt="Package Preview" class="w-full h-full object-cover">
+        </video>
+        
+        <!-- Video Overlay Content 
+        <div class="video-overlay flex flex-col items-center justify-end pb-10">
+            <div class="package-details p-6 w-full max-w-4xl">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Platinum Wedding Package</h1>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xl text-gray-600 mb-2">Rs. 5,200/-</p>
+                        <p class="text-green-800 font-medium">150-300 guests</p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta py-3 px-4 text-center">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="text-white mb-2 md:mb-0">
+                <span class="font-semibold">Interested in this package?</span>
+                <span class="hidden md:inline-block mx-2">|</span>
+                <span>150-300 guests | Rs. 5,200/-</span>
+            </div>
+            <div class="flex space-x-3">
+                <a href="Package_6.html" class="inline-block bg-white text-green-800 px-4 py-2 rounded hover:bg-gray-100 transition font-medium">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scrollable Content Section -->
+    <div class="content-wrapper">
+        <!-- Package Highlights -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Package Highlights</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h3 class="text-xl font-semibold text-green-800 mb-4 flex items-center">
+                            <svg class="h-6 w-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Included Items
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Full Decoration with premium floral arrangements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Welcome Dancers or Item Dancers (your choice)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Traditional Jayamangala performance by two girls</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Professional Music Band or DJ with complete setup</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h3 class="text-xl font-semibold text-green-800 mb-4 flex items-center">
+                            <svg class="h-6 w-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Additional Benefits
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Complimentary bar service with no additional costs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>No hall service charges - all included in package</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Premium soft drinks throughout the event</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Gourmet bites served in both hall and bar areas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Image Gallery 
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Gallery</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="../images/Pkg/pkg-05-1.jpg" alt="Wedding decoration" class="w-full h-full object-cover rounded-lg shadow">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="../images/Pkg/pkg-05-2.jpg" alt="Dance performance" class="w-full h-full object-cover rounded-lg shadow">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="../images/Pkg/pkg-05-3.jpg" alt="Food presentation" class="w-full h-full object-cover rounded-lg shadow">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1">
+                            <img src="../images/Pkg/pkg-05-4.jpg" alt="Bar area" class="w-full h-full object-cover rounded-lg shadow">
+                        </div>
+                    </div>
+                </div>-->
+                
+                <!-- Testimonials 
+                <div class="bg-green-50 p-8 rounded-lg mb-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">What Couples Say</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-800 font-bold mr-4">AS</div>
+                                <div>
+                                    <h4 class="font-semibold">Anjali & Sameer</h4>
+                                    <p class="text-sm text-gray-600">December 2022</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">"The platinum package exceeded our expectations. The dancers were amazing and the decoration was stunning. Our guests are still talking about how beautiful everything was!"</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-800 font-bold mr-4">PR</div>
+                                <div>
+                                    <h4 class="font-semibold">Priya & Rahul</h4>
+                                    <p class="text-sm text-gray-600">March 2023</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">"We loved that everything was included - no hidden costs. The DJ kept the party going all night and the food was delicious. Worth every rupee!"</p>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Contact Form 
+                <div id="contact" class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Enquire About This Package</h3>
+                    <form class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Wedding Date</label>
+                                <input type="date" id="date" name="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="inline-block bg-green-800 text-white px-8 py-3 rounded-md hover:bg-green-700 transition font-medium text-lg">
+                                Send Enquiry
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        
+        <!-- Footer 
+        <footer class="bg-hotel-green text-white py-8 mt-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Green Valley Resort</h3>
+                        <p class="text-sm text-hotel-lime">Luxury wedding experiences since 1995</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                        <ul class="text-sm space-y-2">
+                            
+                            <li><span>Green Valley Resort, Udadigana Road, Maveedalupotha, Kurunegala, Sri Lanka.</span></li>
+                            <li><span>037 222 19 96 / </span>
+                                <span>071 327 1418</span></li>
+                            <li><span>info@greenvalleyresort.lk</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Wedding Inquiries</h3>
+                        <p class="text-sm">For custom packages and availability, please contact our wedding specialists.</p>
+                        <a href="https://wa.me/94710488368?text=Hello%20I%20have%20a%20wedding%20inquiry" target="_blank" class="inline-block mt-3 bg-hotel-lime text-hotel-green px-4 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors">
+                            Request Information
+                        </a>
+                    </div>
+
+                    
+                </div>
+                <div class="border-t border-hotel-lime/20 mt-8 pt-6 text-sm text-center text-hotel-lime">
+                    &copy; 2023 Green Valley Hotel. All rights reserved.
+                </div>
+            </div>
+        </footer>-->
+    </div>
+</body>
+</html>
