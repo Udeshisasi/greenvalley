@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -167,6 +168,63 @@
         
         .w-30 { width: 7.5rem; }
         .h-30 { height: 7.5rem; }
+        
+        /* Sound control styles */
+        .sound-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+        }
+        
+        .sound-btn {
+            background-color: rgba(4, 52, 24, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .sound-btn:hover {
+            background-color: rgba(182, 214, 69, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .sound-waves {
+            display: flex;
+            align-items: flex-end;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .sound-bar {
+            width: 3px;
+            background-color: #b6d645;
+            margin: 0 1px;
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+        
+        .pulsing-bar {
+            animation: pulseBar 1.2s infinite;
+        }
+        
+        @keyframes pulseBar {
+            0% { height: 5px; }
+            50% { height: 15px; }
+            100% { height: 5px; }
+        }
+        
+        .delay-1 { animation-delay: 0s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.4s; }
+        .delay-4 { animation-delay: 0.6s; }
 
         /* Dancing Section Styles */
         .dancing-video-container {
@@ -875,8 +933,25 @@
                             <source src="./green_vally_intro.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        
+                        <!-- Sound Control Button -->
+                        <div class="sound-control">
+                            <button id="sound-toggle" class="sound-btn" onclick="toggleSound()">
+                                <i class="fas fa-volume-mute"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Video Controls -->
+                        <div class="video-controls">
+                            <button class="video-control-btn" onclick="restartVideo()">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                            <button class="video-control-btn" onclick="togglePlayPause()">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </div>  
 
                 <!-- Wedding Packages Section -->
                 <div id="packages-section" class="section hidden animate-fade-in">
@@ -1354,14 +1429,21 @@
                 <!-- Dancing Group Section -->
                 <div id="dancing-section" class="section hidden animate-fade-in relative h-full">
                     <div class="dancing-video-title" id="dancing-video-title"></div>
+                    
+                    <!-- Volume Controls -->
+                    <div class="dancing-volume-control">
+                        <button class="dancing-volume-btn" id="dancing-volume-btn" onclick="toggleDancingMute()">
+                            <i id="dancing-volume-icon" class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" min="0" max="1" step="0.01" value="1" class="dancing-volume-slider" id="dancing-volume-slider" oninput="changeDancingVolume(this.value)">
+                    </div>
+                    
                     <div class="dancing-controls-overlay">
                         <select id="team-dropdown" class="dancing-dropdown-menu" onchange="changeDancingTeam(this.value)">
                             <option value="wes-dance">Wes Dance</option>
                             <option value="item-dance">Item Dance</option>
                         </select>
                     </div>
-
-
                     <div class="dancing-video-container">
                         <video id="dancing-video" muted loop playsinline class="dancing-video-player">
                             <source id="dancing-video-source" src="./Dancing Team.mp4" type="video/mp4">
@@ -1390,12 +1472,21 @@
                             </button>
                             
                         </div>
+                        
                     </div>
                 </div>
 
                 <!-- Vocal Group Section -->
                 <div id="vocal-section" class="section hidden animate-fade-in relative h-full">
-                    <div class="vocal-video-title" id="vocal-video-title"></div>
+                    <div class="vocal-video-title" id="vocal-video-title">Vocal Performance</div>
+                    
+                    <!-- Volume Controls -->
+                    <div class="vocal-volume-control">
+                        <button class="vocal-volume-btn" id="vocal-volume-btn" onclick="toggleVocalMute()">
+                            <i id="vocal-volume-icon" class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" min="0" max="1" step="0.01" value="1" class="vocal-volume-slider" id="vocal-volume-slider" oninput="changeVocalVolume(this.value)">
+                    </div>
 
                     <div class="vocal-video-container">
                         <video id="vocal-video" muted loop playsinline class="vocal-video-player">
@@ -1425,18 +1516,26 @@
                             
                         </div>
                     </div>
-                </div>
+                </div>  
 
-                <!-- Kirikala/Champagne Section -->
+               <!-- Kirikala/Champagne Section -->
                 <div id="kirikala-section" class="section hidden animate-fade-in relative h-full">
+                    <div class="kirikala-video-title" id="kirikala-video-title"></div>
+                    
+                    <!-- Volume Controls -->
+                    <div class="kirikala-volume-control">
+                        <button class="kirikala-volume-btn" id="kirikala-volume-btn" onclick="toggleKirikalaMute()">
+                            <i id="kirikala-volume-icon" class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" min="0" max="1" step="0.01" value="1" class="kirikala-volume-slider" id="kirikala-volume-slider" oninput="changeKirikalaVolume(this.value)">
+                    </div>
+                    
                     <div class="kirikala-controls-overlay">
                         <select id="kirikala-dropdown" class="kirikala-dropdown-menu" onchange="changeKirikalaVideo(this.value)">
                             <option value="champagne">Champagne</option>
                             <option value="kirikala">Kirikala</option>
                         </select>
                     </div>
-
-                    <div class="kirikala-video-title" id="kirikala-video-title"></div>
 
                     <div class="kirikala-video-container">
                         <video id="kirikala-video" muted loop playsinline class="kirikala-video-player">
@@ -1470,6 +1569,13 @@
 
                 <!-- Buffet Section -->
                 <div id="buffet-section" class="section hidden animate-fade-in relative h-full">
+                    <!-- Volume Controls -->
+                    <div class="buffet-volume-control">
+                        <button class="buffet-volume-btn" id="buffet-volume-btn" onclick="toggleBuffetMute()">
+                            <i id="buffet-volume-icon" class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" min="0" max="1" step="0.01" value="1" class="buffet-volume-slider" id="buffet-volume-slider" oninput="changeBuffetVolume(this.value)">
+                    </div>
 
                     <div class="buffet-video-container">
                         <video id="buffet-video" muted loop playsinline class="buffet-video-player">
@@ -1688,6 +1794,66 @@
             document.getElementById('package-options').classList.add('hidden');
             document.getElementById('package-options-party').classList.add('hidden');
         }
+        
+        // Video sound control functions
+        function toggleSound() {
+            const video = document.getElementById('dashboard-video');
+            const soundBtn = document.getElementById('sound-toggle');
+            const icon = soundBtn.querySelector('i');
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+                soundBtn.classList.add('bg-hotel-lime');
+            } else {
+                video.muted = true;
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+                soundBtn.classList.remove('bg-hotel-lime');
+            }
+        }
+        
+        function togglePlayPause() {
+            const video = document.getElementById('dashboard-video');
+            const playPauseBtn = document.querySelector('.video-controls button:nth-child(2)');
+            const icon = playPauseBtn.querySelector('i');
+            
+            if (video.paused) {
+                video.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                video.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        }
+        
+        function restartVideo() {
+            const video = document.getElementById('dashboard-video');
+            video.currentTime = 0;
+            video.play();
+            
+            // Ensure play button shows pause icon
+            const playPauseBtn = document.querySelector('.video-controls button:nth-child(2)');
+            const icon = playPauseBtn.querySelector('i');
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+        }
+        
+        function skipToPackages() {
+            showSection('packages');
+        }
+        
+        // Initialize video with sound muted by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('dashboard-video');
+            video.muted = true; // Start with muted sound
+            
+            // Ensure the dashboard section is shown by default
+            showSection('dashboard');
+        });
 
         // ========================== Dancing Video Functions =========================
         function initializeDancingVideo() {
@@ -1753,11 +1919,9 @@
             const videos = {
                 'wes-dance': {
                     src: './Dancing Team.mp4',
-                    title: 'Wes Dance'
                 },
                 'item-dance': {
                     src: './Item Dance.mp4',
-                    title: ''
                 }
             };
             
@@ -1821,6 +1985,44 @@
         function onDancingVideoEnded() {
             updateDancingPlayPauseButton();
         }
+        
+        // Toggle mute for dancing video
+        function toggleDancingMute() {
+            const video = document.getElementById('dancing-video');
+            const volumeIcon = document.getElementById('dancing-volume-icon');
+            const volumeSlider = document.getElementById('dancing-volume-slider');
+            
+            if (video.muted) {
+                video.muted = false;
+                volumeIcon.className = 'fas fa-volume-up';
+                volumeSlider.value = video.volume;
+            } else {
+                video.muted = true;
+                volumeIcon.className = 'fas fa-volume-mute';
+                volumeSlider.value = 0;
+            }
+        }
+        
+        // Change volume for dancing video
+        function changeDancingVolume(value) {
+            const video = document.getElementById('dancing-video');
+            const volumeIcon = document.getElementById('dancing-volume-icon');
+            
+            video.volume = value;
+            
+            if (value > 0.5) {
+                volumeIcon.className = 'fas fa-volume-up';
+            } else if (value > 0) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-mute';
+            }
+            
+            // Unmute if volume is increased while muted
+            if (video.muted && value > 0) {
+                video.muted = false;
+            }
+        }
 
         // Keyboard controls for dancing video
         document.addEventListener('keydown', function(e) {
@@ -1838,6 +2040,20 @@
                     case 'ArrowRight':
                         e.preventDefault();
                         dancingSkipForward();
+                        break;
+                    case 'KeyM':
+                        e.preventDefault();
+                        toggleDancingMute();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const currentVolume = document.getElementById('dancing-video').volume;
+                        changeDancingVolume(Math.min(1, currentVolume + 0.1));
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        const currentVol = document.getElementById('dancing-video').volume;
+                        changeDancingVolume(Math.max(0, currentVol - 0.1));
                         break;
                 }
             }
@@ -1979,44 +2195,42 @@
         function onVocalVideoEnded() {
             updateVocalPlayPauseButton();
         }
-
-        // Update the showSection function to include vocal video initialization
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
+        
+        // Toggle mute for vocal video
+        function toggleVocalMute() {
+            const video = document.getElementById('vocal-video');
+            const volumeIcon = document.getElementById('vocal-volume-icon');
+            const volumeSlider = document.getElementById('vocal-volume-slider');
             
-            // Show the requested section
-            const section = document.getElementById(sectionId + '-section');
-            if (section) {
-                section.classList.remove('hidden');
+            if (video.muted) {
+                video.muted = false;
+                volumeIcon.className = 'fas fa-volume-up';
+                volumeSlider.value = video.volume;
+            } else {
+                video.muted = true;
+                volumeIcon.className = 'fas fa-volume-mute';
+                volumeSlider.value = 0;
+            }
+        }
+        
+        // Change volume for vocal video
+        function changeVocalVolume(value) {
+            const video = document.getElementById('vocal-video');
+            const volumeIcon = document.getElementById('vocal-volume-icon');
+            
+            video.volume = value;
+            
+            if (value > 0.5) {
+                volumeIcon.className = 'fas fa-volume-up';
+            } else if (value > 0) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-mute';
             }
             
-            // Update active state in sidebar
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Find the button that triggered this and make it active
-            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
-            
-            // Special case for packages section
-            if (sectionId === 'packages') {
-                showWeddingPackages();
-            }
-            
-            // Special case for dancing section - initialize video
-            if (sectionId === 'dancing') {
-                initializeDancingVideo();
-            }
-            
-            // Special case for vocal section - initialize video
-            if (sectionId === 'vocal') {
-                initializeVocalVideo();
+            // Unmute if volume is increased while muted
+            if (video.muted && value > 0) {
+                video.muted = false;
             }
         }
 
@@ -2036,6 +2250,20 @@
                     case 'ArrowRight':
                         e.preventDefault();
                         vocalSkipForward();
+                        break;
+                    case 'KeyM':
+                        e.preventDefault();
+                        toggleVocalMute();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const currentVolume = document.getElementById('vocal-video').volume;
+                        changeVocalVolume(Math.min(1, currentVolume + 0.1));
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        const currentVol = document.getElementById('vocal-video').volume;
+                        changeVocalVolume(Math.max(0, currentVol - 0.1));
                         break;
                 }
             }
@@ -2122,11 +2350,11 @@
             const videos = {
                 'champagne': {
                     src: './Champaign.mp4',
-                    title: ''
+                    title: 'Champagne Celebration'
                 },
                 'kirikala': {
                     src: './kirikala.mp4',
-                    title: ''
+                    title: 'Kirikala Performance'
                 }
             };
             
@@ -2190,49 +2418,42 @@
         function onKirikalaVideoEnded() {
             updateKirikalaPlayPauseButton();
         }
-
-        // Update the showSection function to include kirikala video initialization
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
+        
+        // Toggle mute for kirikala video
+        function toggleKirikalaMute() {
+            const video = document.getElementById('kirikala-video');
+            const volumeIcon = document.getElementById('kirikala-volume-icon');
+            const volumeSlider = document.getElementById('kirikala-volume-slider');
             
-            // Show the requested section
-            const section = document.getElementById(sectionId + '-section');
-            if (section) {
-                section.classList.remove('hidden');
+            if (video.muted) {
+                video.muted = false;
+                volumeIcon.className = 'fas fa-volume-up';
+                volumeSlider.value = video.volume;
+            } else {
+                video.muted = true;
+                volumeIcon.className = 'fas fa-volume-mute';
+                volumeSlider.value = 0;
+            }
+        }
+        
+        // Change volume for kirikala video
+        function changeKirikalaVolume(value) {
+            const video = document.getElementById('kirikala-video');
+            const volumeIcon = document.getElementById('kirikala-volume-icon');
+            
+            video.volume = value;
+            
+            if (value > 0.5) {
+                volumeIcon.className = 'fas fa-volume-up';
+            } else if (value > 0) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-mute';
             }
             
-            // Update active state in sidebar
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Find the button that triggered this and make it active
-            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
-            
-            // Special case for packages section
-            if (sectionId === 'packages') {
-                showWeddingPackages();
-            }
-            
-            // Special case for dancing section - initialize video
-            if (sectionId === 'dancing') {
-                initializeDancingVideo();
-            }
-            
-            // Special case for vocal section - initialize video
-            if (sectionId === 'vocal') {
-                initializeVocalVideo();
-            }
-            
-            // Special case for kirikala section - initialize video
-            if (sectionId === 'kirikala') {
-                initializeKirikalaVideo();
+            // Unmute if volume is increased while muted
+            if (video.muted && value > 0) {
+                video.muted = false;
             }
         }
 
@@ -2253,45 +2474,25 @@
                         e.preventDefault();
                         kirikalaSkipForward();
                         break;
-                }
-            }
-            // Handle vocal section
-            else if (!document.getElementById('vocal-section').classList.contains('hidden')) {
-                switch(e.code) {
-                    case 'Space':
+                    case 'KeyM':
                         e.preventDefault();
-                        toggleVocalPlayPause();
+                        toggleKirikalaMute();
                         break;
-                    case 'ArrowLeft':
+                    case 'ArrowUp':
                         e.preventDefault();
-                        vocalSkipBackward();
+                        const currentVolume = document.getElementById('kirikala-video').volume;
+                        changeKirikalaVolume(Math.min(1, currentVolume + 0.1));
                         break;
-                    case 'ArrowRight':
+                    case 'ArrowDown':
                         e.preventDefault();
-                        vocalSkipForward();
-                        break;
-                }
-            }
-            // Handle dancing section
-            else if (!document.getElementById('dancing-section').classList.contains('hidden')) {
-                switch(e.code) {
-                    case 'Space':
-                        e.preventDefault();
-                        toggleDancingPlayPause();
-                        break;
-                    case 'ArrowLeft':
-                        e.preventDefault();
-                        dancingSkipBackward();
-                        break;
-                    case 'ArrowRight':
-                        e.preventDefault();
-                        dancingSkipForward();
+                        const currentVol = document.getElementById('kirikala-video').volume;
+                        changeKirikalaVolume(Math.max(0, currentVol - 0.1));
                         break;
                 }
             }
         });
 
-        // Buffet Video Functions
+        // ========================== Buffet Video Functions =========================
         function initializeBuffetVideo() {
             const video = document.getElementById('buffet-video');
             const playPauseIcon = document.getElementById('buffet-play-pause-icon');
@@ -2310,6 +2511,11 @@
             // Auto-play the video
             video.play().catch(e => console.log('Autoplay prevented:', e));
             updateBuffetPlayPauseButton();
+            
+            // Initialize volume controls
+            const volumeSlider = document.getElementById('buffet-volume-slider');
+            volumeSlider.value = video.volume;
+            updateBuffetVolumeIcon(video.volume, video.muted);
         }
 
         // Toggle play/pause for buffet video
@@ -2391,54 +2597,49 @@
         function onBuffetVideoEnded() {
             updateBuffetPlayPauseButton();
         }
-
-        // Update the showSection function to include buffet video initialization
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
+        
+        // Toggle mute for buffet video
+        function toggleBuffetMute() {
+            const video = document.getElementById('buffet-video');
+            const volumeIcon = document.getElementById('buffet-volume-icon');
+            const volumeSlider = document.getElementById('buffet-volume-slider');
             
-            // Show the requested section
-            const section = document.getElementById(sectionId + '-section');
-            if (section) {
-                section.classList.remove('hidden');
+            if (video.muted) {
+                video.muted = false;
+                volumeIcon.className = 'fas fa-volume-up';
+                volumeSlider.value = video.volume;
+            } else {
+                video.muted = true;
+                volumeIcon.className = 'fas fa-volume-mute';
+                volumeSlider.value = 0;
             }
+        }
+        
+        // Change volume for buffet video
+        function changeBuffetVolume(value) {
+            const video = document.getElementById('buffet-video');
+            const volumeIcon = document.getElementById('buffet-volume-icon');
             
-            // Update active state in sidebar
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.classList.remove('active');
-            });
+            video.volume = value;
+            updateBuffetVolumeIcon(value, video.muted);
             
-            // Find the button that triggered this and make it active
-            const activeButton = document.querySelector(`button[onclick="showSection('${sectionId}')`);
-            if (activeButton) {
-                activeButton.classList.add('active');
+            // Unmute if volume is increased while muted
+            if (video.muted && value > 0) {
+                video.muted = false;
+                updateBuffetVolumeIcon(value, false);
             }
+        }
+        
+        // Update volume icon based on volume level
+        function updateBuffetVolumeIcon(volume, isMuted) {
+            const volumeIcon = document.getElementById('buffet-volume-icon');
             
-            // Special case for packages section
-            if (sectionId === 'packages') {
-                showWeddingPackages();
-            }
-            
-            // Special case for dancing section - initialize video
-            if (sectionId === 'dancing') {
-                initializeDancingVideo();
-            }
-            
-            // Special case for vocal section - initialize video
-            if (sectionId === 'vocal') {
-                initializeVocalVideo();
-            }
-            
-            // Special case for kirikala section - initialize video
-            if (sectionId === 'kirikala') {
-                initializeKirikalaVideo();
-            }
-            
-            // Special case for buffet section - initialize video
-            if (sectionId === 'buffet') {
-                initializeBuffetVideo();
+            if (isMuted || volume === 0) {
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else if (volume > 0.5) {
+                volumeIcon.className = 'fas fa-volume-up';
+            } else {
+                volumeIcon.className = 'fas fa-volume-down';
             }
         }
 
@@ -2458,6 +2659,20 @@
                     case 'ArrowRight':
                         e.preventDefault();
                         buffetSkipForward();
+                        break;
+                    case 'KeyM':
+                        e.preventDefault();
+                        toggleBuffetMute();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const currentVolume = document.getElementById('buffet-video').volume;
+                        changeBuffetVolume(Math.min(1, currentVolume + 0.1));
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        const currentVol = document.getElementById('buffet-video').volume;
+                        changeBuffetVolume(Math.max(0, currentVol - 0.1));
                         break;
                 }
             }
@@ -3074,4 +3289,3 @@
     </script>
 </body>
 </html>
-
