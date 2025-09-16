@@ -3185,17 +3185,33 @@
         const modal = document.getElementById('quote-modal');
         const content = document.getElementById('quote-content');
         
-        const { breakdown, total, eventType, eventDate, guests, hallSelection } = currentCalculation;
+        const { breakdown, total, eventType, eventDate, guests, hallSelection, isAllInclusive } = currentCalculation;
+        
+        // Generate quote number
+        const date = new Date();
+        const quoteNumber = 'GV' + date.getFullYear() + 
+                        (date.getMonth() + 1).toString().padStart(2, '0') + 
+                        date.getDate().toString().padStart(2, '0') + 
+                        Math.floor(Math.random() * 1000);
+        
+        // Get hall name
+        let hallName = '';
+        if (hallSelection && hallConfig[hallSelection]) {
+            hallName = hallConfig[hallSelection].name;
+        }
         
         let html = `
             <div class="bg-hotel-light p-6 rounded-lg mb-6">
                 <div class="text-center">
                     <h2 class="text-2xl font-bold text-hotel-green mb-2">Green Valley Hotel</h2>
-                    <p class="text-hotel-dark font-medium">Wedding Package Quote</p>
+                    <p class="text-hotel-dark font-medium">${eventType.replace('-', ' ').toUpperCase()} Package Quote</p>
+                    <div class="text-xs text-gray-500 mt-2">
+                        Quote #: ${quoteNumber} | Generated: ${new Date().toLocaleDateString()}
+                    </div>
                 </div>
             </div>
             
-            <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
                 <div>
                     <span class="text-sm text-gray-600">Event Type:</span>
                     <span class="block font-medium capitalize">${eventType.replace('-', ' ')}</span>
@@ -3212,41 +3228,88 @@
                 ${hallSelection ? `
                 <div>
                     <span class="text-sm text-gray-600">Hall:</span>
-                    <span class="block font-medium">${eventType === 'halal' ? getHalalHallName(hallSelection) : (hallConfig[hallSelection] ? hallConfig[hallSelection].name : hallSelection)}</span>
+                    <span class="block font-medium">${hallName}</span>
                 </div>` : ''}
             </div>
             
-            <div class="border-t border-b border-gray-200 py-4 mb-6">
-                <h4 class="font-semibold text-hotel-green mb-3">Package Details</h4>
-                <div class="space-y-2">
+            <div class="border border-gray-200 rounded-lg overflow-hidden mb-6">
+                <table class="w-full">
+                    <thead class="bg-hotel-green text-white">
+                        <tr>
+                            <th class="text-left p-3">Service</th>
+                            <th class="text-center p-3">Qty</th>
+                            <th class="text-right p-3">Unit Price</th>
+                            <th class="text-right p-3">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
         `;
         
         breakdown.forEach(item => {
             html += `
-                <div class="flex justify-between items-center">
-                    <div>
-                        <span class="text-sm">${item.item}</span>
-                        ${item.quantity > 1 ? `<span class="text-xs text-gray-500 block">${item.quantity} × Rs. ${item.unitPrice.toLocaleString()}</span>` : ''}
-                    </div>
-                    <span class="font-medium">Rs. ${item.total.toLocaleString()}</span>
-                </div>
+                <tr class="border-b border-gray-200">
+                    <td class="p-3">${item.item}</td>
+                    <td class="p-3 text-center">${item.quantity}</td>
+                    <td class="p-3 text-right">Rs. ${item.unitPrice.toLocaleString()}</td>
+                    <td class="p-3 text-right font-semibold">Rs. ${item.total.toLocaleString()}</td>
+                </tr>
             `;
         });
         
         html += `
-                </div>
+                    </tbody>
+                    <tfoot class="bg-hotel-lime">
+                        <tr>
+                            <td colspan="3" class="p-3 text-right font-bold text-hotel-green">Grand Total:</td>
+                            <td class="p-3 text-right font-bold text-hotel-green text-xl">Rs. ${total.toLocaleString()}</td>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
-            
-            <div class="bg-hotel-green text-white p-4 rounded-lg text-center">
-                <div class="text-lg font-semibold">Total Amount</div>
-                <div class="text-2xl font-bold">Rs. ${total.toLocaleString()}</div>
-                <div class="text-sm opacity-90 mt-1">For ${guests} guests</div>
+        `;
+        
+        // Add package features if all-inclusive
+        if (isAllInclusive) {
+            html += `
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                    <h4 class="font-bold text-blue-800 mb-2">All-Inclusive Package Features:</h4>
+                    <ul class="text-sm text-blue-700 list-disc ml-5 space-y-1">
+                        <li>Premium decorations and venue setup</li>
+                        <li>Professional entertainment (DJ/Music Band)</li>
+                        <li>Complete catering service</li>
+                        <li>Wedding cake and champagne service</li>
+                        <li>Photography and videography coordination</li>
+                        <li>Event planning and coordination</li>
+                    </ul>
+                </div>
+            `;
+        }
+        
+        // Add small crowd surcharge notice if applicable
+        if (eventType !== 'party' && hallSelection && guests > 0) {
+            const hall = hallConfig[hallSelection];
+            if (hall && guests < hall.minGuests) {
+                html += `
+                `;
+            }
+        }
+        
+        html += `
+            <div class="text-sm text-gray-600 space-y-2">
+                <p><strong>Terms & Conditions:</strong></p>
+                <ul class="list-disc ml-5 space-y-1">
+                    <li>The advanced payment is non-refundable.</li>
+                    <li>An advance payment of Rs. 50,000 is required to confirm the reservation.</li>
+                    <li>Reservation must be confirmed within 7 days</li>
+                </ul>
             </div>
             
             <div class="mt-6 text-sm text-gray-600 text-center">
-                <p>Quote generated on ${new Date().toLocaleDateString()}</p>
-                <p class="mt-2">Contact us for booking: +94 XX XXX XXXX</p>
-                <p>Email: info@greenvalleyhotel.lk</p>
+                <p><strong>For inquiries and bookings:</strong></p>
+                <p>📞 Phone: 037 222 19 96 | 077 999 03 000 </p>
+                <p>📧 Email: info@greenvalleyresort.lk</p>
+                <p>🌐 Website: www.greenvalleyresort.lk</p>
+                <p style="margin-top: 15px; font-style: italic;">Your Dream Event Destination</p>
             </div>
         `;
         
@@ -3258,9 +3321,310 @@
         document.getElementById('quote-modal').classList.add('hidden');
     }
 
-    function downloadPDF() {
-        window.print();
-    }
+    function downloadQuotation() {
+            if (!currentCalculation) {
+                alert('Please calculate the price first');
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            
+            // PDF styling constants
+            const pageWidth = 190; // A4 width minus margins (210 - 20)
+            const pageHeight = 277; // A4 height minus margins (297 - 20)
+            const margin = 10;
+            const lineHeight = 7;
+            let currentY = margin;
+            
+            // Colors
+            const primaryColor = [4, 52, 24]; // Hotel green
+            const accentColor = [182, 214, 69]; // Hotel lime
+            const grayColor = [107, 114, 128];
+            
+            // Helper function to check if we need a new page
+            function checkPageBreak(requiredHeight) {
+                if (currentY + requiredHeight > pageHeight) {
+                    pdf.addPage();
+                    currentY = margin;
+                    return true;
+                }
+                return false;
+            }
+            
+            // Helper function to add text with word wrapping
+            function addWrappedText(text, x, y, maxWidth, fontSize = 10) {
+                pdf.setFontSize(fontSize);
+                const lines = pdf.splitTextToSize(text, maxWidth);
+                lines.forEach((line, index) => {
+                    checkPageBreak(lineHeight);
+                    pdf.text(line, x, y + (index * lineHeight));
+                });
+                return y + (lines.length * lineHeight);
+            }
+            
+            // Generate quote number
+            const date = new Date();
+            const quoteNumber = 'GV' + date.getFullYear() + 
+                            (date.getMonth() + 1).toString().padStart(2, '0') + 
+                            date.getDate().toString().padStart(2, '0') + 
+                            Math.floor(Math.random() * 1000);
+            
+            // Header
+            pdf.setFillColor(...primaryColor);
+            pdf.rect(margin, currentY, pageWidth, 25, 'F');
+            
+            pdf.setTextColor(255, 255, 255);
+            pdf.setFontSize(20);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Green Valley Hotel', margin + 5, currentY + 8);
+            
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'normal');
+            pdf.text(`${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)} Package Quotation`, margin + 5, currentY + 16);
+            
+            // Quote details in header
+            pdf.setFontSize(8);
+            pdf.text(`Quote #: ${quoteNumber}`, pageWidth - 40, currentY + 8);
+            pdf.text(`Date: ${new Date().toLocaleDateString()}`, pageWidth - 40, currentY + 14);
+            pdf.text(`Valid Until: ${new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString()}`, pageWidth - 40, currentY + 20);
+            
+            currentY += 35;
+            
+            // Event Details Section
+            pdf.setTextColor(0, 0, 0);
+            pdf.setFontSize(14);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Event Details', margin, currentY);
+            currentY += 10;
+            
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'normal');
+            
+            const eventDetails = [
+                `Event Type: ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)}`,
+                `Event Date: ${currentCalculation.eventDate || 'To be confirmed'}`,
+                `Number of Guests: ${currentCalculation.guests}`
+            ];
+            
+            if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection) {
+                const hall = hallConfig[currentCalculation.hallSelection];
+                eventDetails.push(`Hall: ${hall.name}`);
+            }
+            
+            eventDetails.forEach(detail => {
+                checkPageBreak(lineHeight);
+                pdf.text(detail, margin, currentY);
+                currentY += lineHeight;
+            });
+            
+            currentY += 10;
+            
+            // Service Breakdown Table
+            checkPageBreak(20);
+            pdf.setFontSize(14);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Service Breakdown', margin, currentY);
+            currentY += 10;
+            
+            // Table header
+            checkPageBreak(15);
+            pdf.setFillColor(...accentColor);
+            pdf.rect(margin, currentY, pageWidth, 10, 'F');
+            
+            pdf.setTextColor(...primaryColor);
+            pdf.setFontSize(10);
+            pdf.setFont('helvetica', 'bold');
+            
+            pdf.text('Service', margin + 2, currentY + 7);
+            pdf.text('Qty', margin + 100, currentY + 7);
+            pdf.text('Unit Price', margin + 125, currentY + 7);
+            pdf.text('Total', margin + 160, currentY + 7);
+            
+            currentY += 12;
+            
+            // Table rows
+            pdf.setTextColor(0, 0, 0);
+            pdf.setFont('helvetica', 'normal');
+            
+            currentCalculation.breakdown.forEach((item, index) => {
+                checkPageBreak(lineHeight + 2);
+                
+                // Alternate row background
+                if (index % 2 === 0) {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY - 2, pageWidth, lineHeight + 2, 'F');
+                }
+                
+                // Service name (with word wrapping if needed)
+                const serviceLines = pdf.splitTextToSize(item.item, 95);
+                pdf.text(serviceLines[0], margin + 2, currentY + 4);
+                
+                // If service name is too long, show truncated version
+                if (serviceLines.length > 1) {
+                    pdf.text(serviceLines[0].substring(0, serviceLines[0].length - 3) + '...', margin + 2, currentY + 4);
+                }
+                
+                pdf.text(item.quantity.toString(), margin + 100, currentY + 4);
+                pdf.text(`Rs. ${item.unitPrice.toLocaleString()}`, margin + 125, currentY + 4);
+                pdf.text(`Rs. ${item.total.toLocaleString()}`, margin + 160, currentY + 4);
+                
+                currentY += lineHeight + 2;
+            });
+            
+            // Total
+            checkPageBreak(15);
+            pdf.setFillColor(...primaryColor);
+            pdf.rect(margin, currentY, pageWidth, 12, 'F');
+            
+            pdf.setTextColor(255, 255, 255);
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('GRAND TOTAL:', margin + 2, currentY + 8);
+            pdf.text(`Rs. ${currentCalculation.total.toLocaleString()}`, margin + 160, currentY + 8);
+            
+            currentY += 20;
+            
+            // Package Features
+            if (currentCalculation.isAllInclusive) {
+                checkPageBreak(50);
+                pdf.setTextColor(...primaryColor);
+                pdf.setFontSize(12);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('All-Inclusive Package Features:', margin, currentY);
+                currentY += 8;
+                
+                pdf.setTextColor(0, 0, 0);
+                pdf.setFontSize(9);
+                pdf.setFont('helvetica', 'normal');
+                
+                const features = [
+                ];
+                
+                features.forEach(feature => {
+                    checkPageBreak(lineHeight);
+                    pdf.text(feature, margin + 5, currentY);
+                    currentY += lineHeight;
+                });
+                
+                currentY += 5;
+            }
+            
+            // Small crowd surcharge notice
+            if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection && currentCalculation.guests > 0) {
+                const hall = hallConfig[currentCalculation.hallSelection];
+                if (hall && currentCalculation.guests < hall.minGuests) {
+                    checkPageBreak(25);
+                    
+                    // Warning box background
+                    pdf.setFillColor(255, 237, 213); // Orange background
+                    pdf.rect(margin, currentY - 2, pageWidth, 20, 'F');
+                    
+                    pdf.setTextColor(154, 52, 18); // Orange text
+                    pdf.setFontSize(11);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text('⚠ Important Notice:', margin + 5, currentY + 5);
+                    
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'normal');
+                    const noticeText = `Small crowd surcharge (Rs. ${hall.surcharge.toLocaleString()}) applied for fewer than ${hall.minGuests} guests in ${hall.name}.`;
+                    currentY = addWrappedText(noticeText, margin + 5, currentY + 12, pageWidth - 10, 9);
+                    currentY += 10;
+                }
+            }
+            
+            // Terms & Conditions
+            checkPageBreak(80);
+            pdf.setTextColor(...primaryColor);
+            pdf.setFontSize(14);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Terms & Conditions', margin, currentY);
+            currentY += 10;
+            
+            pdf.setTextColor(0, 0, 0);
+            pdf.setFontSize(9);
+            pdf.setFont('helvetica', 'normal');
+            
+            const terms = [
+                '1. The Advanced Payment is Non-Refundable.',
+                '2. Rs. 50,000 Advance Payment Required for Booking.',
+                '3. Reservation must be Confirmed within 7 Days of Quote Generation.'
+            ];
+            
+            terms.forEach(term => {
+                checkPageBreak(lineHeight);
+                const lines = pdf.splitTextToSize(term, pageWidth - 10);
+                lines.forEach(line => {
+                    checkPageBreak(lineHeight);
+                    pdf.text(line, margin + 5, currentY);
+                    currentY += lineHeight;
+                });
+            });
+            
+            currentY += 10;
+            
+            // Contact Information
+            checkPageBreak(30);
+            pdf.setFillColor(248, 250, 252);
+            pdf.rect(margin, currentY - 5, pageWidth, 25, 'F');
+            
+            pdf.setTextColor(...primaryColor);
+            pdf.setFontSize(12);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Contact Information', margin + 5, currentY + 3);
+            
+            pdf.setTextColor(0, 0, 0);
+            pdf.setFontSize(9);
+            pdf.setFont('helvetica', 'normal');
+            
+            const contactInfo = [
+                'Green Valley Hotel',
+                'For inquiries and bookings:',
+                'Phone: 037 222 19 96 | 077 999 03 000',
+                'Email: info@greenvalleyresort.lk',
+                'Website: www.greenvalleyresort.lk',
+                'Your Dream Event Destination' 
+            ];
+            
+            contactInfo.forEach((info, index) => {
+                pdf.text(info, margin + 5, currentY + 10 + (index * 4));
+            });
+            
+            currentY += 35;
+            
+            // Footer on every page
+            const totalPages = pdf.internal.getNumberOfPages();
+            for (let i = 1; i <= totalPages; i++) {
+                pdf.setPage(i);
+                
+                // Footer line
+                pdf.setDrawColor(...grayColor);
+                pdf.line(margin, 287, pageWidth + margin, 287);
+                
+                // Footer text
+                pdf.setTextColor(...grayColor);
+                pdf.setFontSize(8);
+                pdf.setFont('helvetica', 'normal');
+                pdf.text('Green Valley Hotel - Your Dream Event Destination', margin, 292);
+                pdf.text(`Page ${i} of ${totalPages}`, pageWidth - 20, 292);
+                
+                // Add timestamp
+                pdf.text(`Generated on: ${new Date().toLocaleString()}`, margin, 297);
+            }
+            
+            // Generate filename
+            const eventType = currentCalculation.eventType.charAt(0).toUpperCase() + 
+                            currentCalculation.eventType.slice(1);
+            const dateStr = new Date().toISOString().split('T')[0];
+            const filename = `GreenValley_${eventType}_Quote_${quoteNumber}_${dateStr}.pdf`;
+            
+            // Save the PDF
+            pdf.save(filename);
+        }
+
+        function downloadPDF() {
+            downloadQuotation();
+        }
 
     function shareViaWhatsApp() {
         if (!currentCalculation) {
@@ -3268,24 +3632,61 @@
             return;
         }
         
-        const { total, eventType, guests, eventDate } = currentCalculation;
-        const message = `🏨 Green Valley Hotel - Wedding Package Quote\n\n` +
-                       `Event Type: ${eventType.replace('-', ' ')}\n` +
-                       `Guests: ${guests}\n` +
-                       `${eventDate ? `Date: ${new Date(eventDate).toLocaleDateString()}\n` : ''}` +
-                       `Total Amount: Rs. ${total.toLocaleString()}\n\n` +
-                       `Generated on ${new Date().toLocaleDateString()}\n` +
-                       `Contact: +94 XX XXX XXXX`;
+        const selectedHallName = currentCalculation.hallSelection ? 
+            hallConfig[currentCalculation.hallSelection].name : 'Not Selected';
         
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+        let message = `🏨 *Green Valley Hotel - ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)} Package Quote*\n\n`;
+        message += `📅 *Event Type:* ${currentCalculation.eventType.charAt(0).toUpperCase() + currentCalculation.eventType.slice(1)}\n`;
+        message += `👥 *Number of Guests:* ${currentCalculation.guests}\n`;
+        
+        if (currentCalculation.eventDate) {
+            message += `📆 *Event Date:* ${currentCalculation.eventDate}\n`;
+        }
+        
+        if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection) {
+            message += `🏛️ *Hall:* ${selectedHallName}\n`;
+        }
+        
+        message += `\n💰 *Package Breakdown:*\n`;
+        
+        currentCalculation.breakdown.forEach(item => {
+            message += `• ${item.item} - Rs. ${item.total.toLocaleString()}\n`;
+        });
+        
+        message += `\n💵 *Total Amount: Rs. ${currentCalculation.total.toLocaleString()}*\n\n`;
+        
+        // Add package features if all-inclusive
+        if (currentCalculation.isAllInclusive) {
+            message += `✨ *All-Inclusive Features:*\n`;
+            message += `• Premium decorations and venue setup\n`;
+            message += `• Professional entertainment (DJ/Music Band)\n`;
+            message += `• Complete catering service\n`;
+            message += `• Wedding cake and champagne service\n`;
+            message += `• Photography and videography coordination\n`;
+            message += `• Event planning and coordination\n\n`;
+        }
+        
+        // Add small crowd surcharge notice if applicable
+        if (currentCalculation.eventType !== 'party' && currentCalculation.hallSelection && currentCalculation.guests > 0) {
+            const hall = hallConfig[currentCalculation.hallSelection];
+            if (hall && currentCalculation.guests < hall.minGuests) {
+            }
+        }
+        
+        message += `📝 *Terms & Conditions:*\n`;
+        message += `• The advanced payment is non-refundable\n`;
+        message += `• Rs. 50,000 advance payment required for booking\n`;
+        message += `• Reservation must be confirmed within 7 days\n\n`;
+        
+        message += `📞 *Contact us for booking:*\n`;
+        message += `Phone: 037 222 19 96\n`;
+        message += `Email: info@greenvalleyhotel.lk\n\n`;
+        
+        message += `_Quote generated on ${new Date().toLocaleDateString()}_`;
+        
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     }
-
-    // Initialize the form
-    document.addEventListener('DOMContentLoaded', function() {
-        handleEventTypeChange();
-    });
     </script>
 </body>
 </html>
